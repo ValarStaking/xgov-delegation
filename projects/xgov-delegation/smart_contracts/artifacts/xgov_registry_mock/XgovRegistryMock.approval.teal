@@ -1,0 +1,302 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 1 32 0 8
+    bytecblock 0x78 0x151f7c75
+    // smart_contracts/xgov_registry_mock/contract.py:19
+    // class XgovRegistryMock(ARC4Contract, avm_version=10):
+    txn NumAppArgs
+    bz main___algopy_default_create@15
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    assert
+    pushbytess 0xa1cd7621 0x158f8dd6 0x0da27885 0x27630d65 0xb8facdf3 0xa5917671 // method "create_proposal()uint64", method "vote_proposal(uint64,address,uint64,uint64)void", method "set_voting_account(address,address)void", method "get_xgov_box(address)((address,uint64,uint64,uint64),bool)", method "set_xgov_box(address,(address,uint64,uint64,uint64))void", method "del_xgov_box(address)void"
+    txna ApplicationArgs 0
+    match create_proposal vote_proposal set_voting_account get_xgov_box set_xgov_box del_xgov_box
+    err
+
+main___algopy_default_create@15:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    assert // OnCompletion must be NoOp && can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.create_proposal[routing]() -> void:
+create_proposal:
+    // smart_contracts/xgov_registry_mock/contract.py:38-40
+    // res = arc4.arc4_create(
+    //     ProposalMock,
+    // )
+    itxn_begin
+    pushint 4 // 4
+    itxn_field GlobalNumUint
+    pushbytes base64(CoEBQw==)
+    itxn_field ClearStateProgramPages
+    pushbytes base64(CiAEAQAIICYFAVYPcmVnaXN0cnlfYXBwX2lkBnN0YXR1cxZ2b3RlX29wZW5pbmdfdGltZXN0YW1wD3ZvdGluZ19kdXJhdGlvbjEYQAANKSNnKiNnKyNnJwQjZzEZFEQxGEEAOYIHBBOUzDwErlrBDwS09PmpBLuOHWgE8w/7ugRdh0c2BCRhX5A2GgCOBwAVACMAMQBAAFcAcQCAAIAETFxhujYaAI4BAAEAKTINZyJDNhoBSRUkEkQXKkxnIkM2GgFJFSQSRBcrTGciQzYaAUkVJBJEFycETGciQzYaARUlEkQ2GgIVJBJENhoDFSQSRCJDNhoBSRUlEkQ2GgJJFSQSRBcoTwJQTBa/IkM2GgFJFSUSRChMULxIIkM2GgFJFSUSRChMUEm9SU8CSEEAGUsBvkQXFoABACNLA1RQgAQVH3x1TFCwIkMjQv/o)
+    itxn_field ApprovalProgramPages
+    // smart_contracts/xgov_registry_mock/contract.py:39
+    // ProposalMock,
+    pushbytes 0x4c5c61ba // method "create()void"
+    itxn_field ApplicationArgs
+    // smart_contracts/xgov_registry_mock/contract.py:38-40
+    // res = arc4.arc4_create(
+    //     ProposalMock,
+    // )
+    pushint 6 // appl
+    itxn_field TypeEnum
+    intc_2 // 0
+    itxn_field Fee
+    itxn_submit
+    itxn CreatedApplicationID
+    // smart_contracts/xgov_registry_mock/contract.py:42-45
+    // itxn.Payment(
+    //     receiver=res.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/xgov_registry_mock/contract.py:43
+    // receiver=res.created_app.address,
+    dup
+    app_params_get AppAddress
+    assert // application exists
+    // smart_contracts/xgov_registry_mock/contract.py:44
+    // amount=Global.min_balance,
+    global MinBalance
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/xgov_registry_mock/contract.py:42
+    // itxn.Payment(
+    intc_0 // pay
+    itxn_field TypeEnum
+    intc_2 // 0
+    itxn_field Fee
+    // smart_contracts/xgov_registry_mock/contract.py:42-45
+    // itxn.Payment(
+    //     receiver=res.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/xgov_registry_mock/contract.py:27
+    // @arc4.abimethod()
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.vote_proposal[routing]() -> void:
+vote_proposal:
+    // smart_contracts/xgov_registry_mock/contract.py:49
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 2
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 3
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 4
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/xgov_registry_mock/contract.py:66-72
+    // arc4.abi_call(
+    //     ProposalMock.vote,
+    //     xgov_address,
+    //     approval_votes,
+    //     rejection_votes,
+    //     app_id=proposal_id.as_uint64(),
+    // )
+    itxn_begin
+    // smart_contracts/xgov_registry_mock/contract.py:71
+    // app_id=proposal_id.as_uint64(),
+    uncover 3
+    btoi
+    itxn_field ApplicationID
+    // smart_contracts/xgov_registry_mock/contract.py:66-72
+    // arc4.abi_call(
+    //     ProposalMock.vote,
+    //     xgov_address,
+    //     approval_votes,
+    //     rejection_votes,
+    //     app_id=proposal_id.as_uint64(),
+    // )
+    pushbytes 0xbb8e1d68 // method "vote(address,uint64,uint64)void"
+    itxn_field ApplicationArgs
+    uncover 2
+    itxn_field ApplicationArgs
+    swap
+    itxn_field ApplicationArgs
+    itxn_field ApplicationArgs
+    pushint 6 // appl
+    itxn_field TypeEnum
+    intc_2 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/xgov_registry_mock/contract.py:49
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.set_voting_account[routing]() -> void:
+set_voting_account:
+    // smart_contracts/xgov_registry_mock/contract.py:74
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/xgov_registry_mock/contract.py:85
+    // self.xgov_box[xgov_address.native].voting_address = voting_address
+    bytec_0 // 0x78
+    uncover 2
+    concat
+    intc_2 // 0
+    uncover 2
+    box_replace
+    // smart_contracts/xgov_registry_mock/contract.py:74
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.get_xgov_box[routing]() -> void:
+get_xgov_box:
+    // smart_contracts/xgov_registry_mock/contract.py:89
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/xgov_registry_mock/contract.py:101
+    // exists = xgov_address.native in self.xgov_box
+    bytec_0 // 0x78
+    swap
+    concat
+    dup
+    box_len
+    dup
+    uncover 2
+    pop
+    // smart_contracts/xgov_registry_mock/contract.py:102
+    // if exists:
+    bz get_xgov_box_else_body@3
+    // smart_contracts/xgov_registry_mock/contract.py:103
+    // val = self.xgov_box[xgov_address.native].copy()
+    dig 1
+    box_get
+    assert // check self.xgov_box entry exists
+
+get_xgov_box_after_if_else@4:
+    // smart_contracts/xgov_registry_mock/contract.py:89
+    // @arc4.abimethod(readonly=True)
+    pushbytes 0x00
+    intc_2 // 0
+    dig 3
+    setbit
+    concat
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+get_xgov_box_else_body@3:
+    // smart_contracts/xgov_registry_mock/contract.py:105-110
+    // val = typ.XGovBoxValue(
+    //     voting_address=arc4.Address(),
+    //     voted_proposals=arc4.UInt64(0),
+    //     last_vote_timestamp=arc4.UInt64(0),
+    //     subscription_round=arc4.UInt64(0),
+    // )
+    pushbytes base32(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)
+    b get_xgov_box_after_if_else@4
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.set_xgov_box[routing]() -> void:
+set_xgov_box:
+    // smart_contracts/xgov_registry_mock/contract.py:114
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 56 // 56
+    ==
+    assert // invalid number of bytes for smart_contracts.common.abi_types.XGovBoxValue
+    // smart_contracts/xgov_registry_mock/contract.py:127
+    // self.xgov_box[xgov_address.native] = xgov_box.copy()
+    bytec_0 // 0x78
+    uncover 2
+    concat
+    swap
+    box_put
+    // smart_contracts/xgov_registry_mock/contract.py:114
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.xgov_registry_mock.contract.XgovRegistryMock.del_xgov_box[routing]() -> void:
+del_xgov_box:
+    // smart_contracts/xgov_registry_mock/contract.py:131
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/xgov_registry_mock/contract.py:142
+    // del self.xgov_box[xgov_address.native]
+    bytec_0 // 0x78
+    swap
+    concat
+    box_del
+    pop
+    // smart_contracts/xgov_registry_mock/contract.py:131
+    // @arc4.abimethod()
+    intc_0 // 1
+    return

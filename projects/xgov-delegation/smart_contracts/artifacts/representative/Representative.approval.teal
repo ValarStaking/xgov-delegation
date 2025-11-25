@@ -1,0 +1,666 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 1 8 32
+    bytecblock 0x706175736564 0x726570726573656e7461746976655f61646472657373 0x72656769737472795f617070 0x7076 0x151f7c75
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/representative/contract.py:40-41
+    // # Preconditions
+    // assert Txn.global_num_byte_slice == cfg.GLOBAL_BYTES, err.WRONG_GLOBAL_BYTES
+    txn GlobalNumByteSlice
+    intc_3 // 32
+    ==
+    assert // Wrong Global Bytes allocation
+    // smart_contracts/representative/contract.py:42
+    // assert Txn.global_num_uint == cfg.GLOBAL_UINTS, err.WRONG_GLOBAL_UINTS
+    txn GlobalNumUint
+    intc_3 // 32
+    ==
+    assert // Wrong Global UInts allocation
+    // smart_contracts/representative/contract.py:43
+    // assert Txn.local_num_byte_slice == cfg.LOCAL_BYTES, err.WRONG_LOCAL_BYTES
+    txn LocalNumByteSlice
+    pushint 9 // 9
+    ==
+    assert // Wrong Local Bytes allocation
+    // smart_contracts/representative/contract.py:44
+    // assert Txn.local_num_uint == cfg.LOCAL_UINTS, err.WRONG_LOCAL_UINTS
+    txn LocalNumUint
+    pushint 7 // 7
+    ==
+    assert // Wrong Local UInts allocation
+    // smart_contracts/representative/contract.py:49
+    // key=cfg.GS_KEY_REPRESENTATIVE_ADDRESS,
+    bytec_1 // 0x726570726573656e7461746976655f61646472657373
+    // smart_contracts/representative/contract.py:48
+    // Account(),
+    global ZeroAddress
+    // smart_contracts/representative/contract.py:46-50
+    // # Global Variables
+    // self.representative_address = GlobalState(
+    //     Account(),
+    //     key=cfg.GS_KEY_REPRESENTATIVE_ADDRESS,
+    // )
+    app_global_put
+    // smart_contracts/representative/contract.py:53
+    // key=cfg.GS_KEY_REGISTRY_APP,
+    bytec_2 // 0x72656769737472795f617070
+    // smart_contracts/representative/contract.py:52
+    // Application(),
+    intc_0 // 0
+    // smart_contracts/representative/contract.py:51-54
+    // self.registry_app = GlobalState(
+    //     Application(),
+    //     key=cfg.GS_KEY_REGISTRY_APP,
+    // )
+    app_global_put
+    // smart_contracts/representative/contract.py:58
+    // key=cfg.GS_KEY_PAUSED,
+    bytec_0 // 0x706175736564
+    // smart_contracts/representative/contract.py:57
+    // UInt64(),
+    intc_0 // 0
+    // smart_contracts/representative/contract.py:56-59
+    // self.paused = GlobalState(
+    //     UInt64(),
+    //     key=cfg.GS_KEY_PAUSED,
+    // )
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/representative/contract.py:29-38
+    // class Representative(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    pushbytess 0xa0e81872 0x24378d3c // method "update()void", method "delete()void"
+    txna ApplicationArgs 0
+    match main_update_route@4 main_delete_route@5
+
+main_switch_case_next@6:
+    // smart_contracts/representative/contract.py:29-38
+    // class Representative(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    bz main_create_NoOp@15
+    pushbytess 0x0178f94b 0x242d58ab 0x3c362694 0xbb1c7ea5 0x63e6ccd6 0x6ea81eb1 // method "pause()void", method "resume()void", method "publish_vote(pay,uint64,(uint64,uint64))void", method "delete_vote(uint64)void", method "get_vote_box(uint64)((uint64,uint64),bool)", method "get_vote(uint64)((uint64,uint64),bool)"
+    txna ApplicationArgs 0
+    match pause resume publish_vote delete_vote get_vote_box get_vote
+    err
+
+main_create_NoOp@15:
+    // smart_contracts/representative/contract.py:29-38
+    // class Representative(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    pushbytes 0xcc694eaa // method "create(address)void"
+    txna ApplicationArgs 0
+    match create
+    err
+
+main_delete_route@5:
+    // smart_contracts/representative/contract.py:224
+    // @arc4.abimethod(allow_actions=("DeleteApplication",))
+    txn OnCompletion
+    pushint 5 // DeleteApplication
+    ==
+    txn ApplicationID
+    &&
+    assert // OnCompletion must be DeleteApplication && can only call when not creating
+    b delete
+
+main_update_route@4:
+    // smart_contracts/representative/contract.py:94
+    // @arc4.abimethod(allow_actions=["UpdateApplication"])
+    txn OnCompletion
+    pushint 4 // UpdateApplication
+    ==
+    txn ApplicationID
+    &&
+    assert // OnCompletion must be UpdateApplication && can only call when not creating
+    b update
+
+
+// smart_contracts.representative.contract.Representative.create[routing]() -> void:
+create:
+    // smart_contracts/representative/contract.py:68
+    // @arc4.abimethod(create="require")
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/representative/contract.py:84
+    // Global.caller_application_id != 0
+    global CallerApplicationID
+    // smart_contracts/representative/contract.py:83-85
+    // assert (
+    //     Global.caller_application_id != 0
+    // ), err.UNAUTHORIZED  # Only callable by another contract
+    assert // Unauthorized
+    // smart_contracts/representative/contract.py:87
+    // self.registry_app.value = Application(Global.caller_application_id)
+    bytec_2 // 0x72656769737472795f617070
+    global CallerApplicationID
+    app_global_put
+    // smart_contracts/representative/contract.py:88
+    // self.representative_address.value = representative_address.native
+    bytec_1 // 0x726570726573656e7461746976655f61646472657373
+    swap
+    app_global_put
+    // smart_contracts/representative/contract.py:90
+    // self.paused.value = UInt64(0)
+    bytec_0 // 0x706175736564
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/representative/contract.py:68
+    // @arc4.abimethod(create="require")
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.update[routing]() -> void:
+update:
+    // smart_contracts/representative/contract.py:304
+    // return Txn.sender == Global.creator_address
+    txn Sender
+    global CreatorAddress
+    ==
+    // smart_contracts/representative/contract.py:103
+    // assert self.is_creator(), err.NOT_CREATOR
+    assert // Sender is not app creator
+    // smart_contracts/representative/contract.py:94
+    // @arc4.abimethod(allow_actions=["UpdateApplication"])
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.pause[routing]() -> void:
+pause:
+    // smart_contracts/representative/contract.py:115
+    // assert self.is_representative(), err.UNAUTHORIZED
+    callsub is_representative
+    assert // Unauthorized
+    // smart_contracts/representative/contract.py:116
+    // self.paused.value = UInt64(1)
+    bytec_0 // 0x706175736564
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/representative/contract.py:107
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.resume[routing]() -> void:
+resume:
+    // smart_contracts/representative/contract.py:128
+    // assert self.is_representative(), err.UNAUTHORIZED
+    callsub is_representative
+    assert // Unauthorized
+    // smart_contracts/representative/contract.py:129
+    // self.paused.value = UInt64(0)
+    bytec_0 // 0x706175736564
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/representative/contract.py:120
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.publish_vote[routing]() -> void:
+publish_vote:
+    // smart_contracts/representative/contract.py:133
+    // @arc4.abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 16 // 16
+    ==
+    assert // invalid number of bytes for smart_contracts.common.abi_types.Vote
+    // smart_contracts/representative/contract.py:158
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/representative/contract.py:160
+    // assert self.is_representative(), err.UNAUTHORIZED
+    callsub is_representative
+    assert // Unauthorized
+    // smart_contracts/representative/contract.py:320
+    // proposal_creator = Application(proposal_id.as_uint64()).creator
+    uncover 2
+    btoi
+    dup
+    app_params_get AppCreator
+    assert // application exists
+    // smart_contracts/representative/contract.py:313
+    // self.registry_app.value,
+    intc_0 // 0
+    bytec_2 // 0x72656769737472795f617070
+    app_global_get_ex
+    assert // check self.registry_app exists
+    // smart_contracts/representative/contract.py:314
+    // reg_cfg.GS_KEY_XGOV_REGISTRY_APP,
+    pushbytes 0x78676f765f72656769737472795f617070
+    // smart_contracts/representative/contract.py:312-315
+    // xgov_registry_id, exists = op.AppGlobal.get_ex_uint64(
+    //     self.registry_app.value,
+    //     reg_cfg.GS_KEY_XGOV_REGISTRY_APP,
+    // )
+    app_global_get_ex
+    pop
+    // smart_contracts/representative/contract.py:322
+    // xgov_registry_address = Application(xgov_registry_id).address
+    app_params_get AppAddress
+    assert // application exists
+    // smart_contracts/representative/contract.py:323
+    // return proposal_creator == xgov_registry_address
+    ==
+    // smart_contracts/representative/contract.py:162
+    // assert self.is_valid_proposal(proposal_id), err.INVALID_PROPOSAL
+    assert // Proposal is not part of xGov Registry
+    // smart_contracts/representative/contract.py:164
+    // assert not self.paused.value, err.PAUSED
+    intc_0 // 0
+    bytec_0 // 0x706175736564
+    app_global_get_ex
+    assert // check self.paused exists
+    !
+    assert // Contract is paused
+    // smart_contracts/representative/contract.py:167
+    // assert proposal_app not in self.proposals_vote_box, err.VOTE_ALREADY_PUBLISHED
+    itob
+    bytec_3 // 0x7076
+    swap
+    concat
+    dup
+    box_len
+    bury 1
+    !
+    assert // Representative vote was already published
+    // smart_contracts/representative/contract.py:170
+    // vote.approval.as_uint64() + vote.rejection.as_uint64() <= const.BPS
+    dig 2
+    intc_0 // 0
+    extract_uint64
+    dig 3
+    intc_2 // 8
+    extract_uint64
+    +
+    pushint 10000 // 10000
+    <=
+    // smart_contracts/representative/contract.py:169-171
+    // assert (
+    //     vote.approval.as_uint64() + vote.rejection.as_uint64() <= const.BPS
+    // ), err.VOTE_NOT_BPS
+    assert // Vote not in BPS
+    // smart_contracts/representative/contract.py:173
+    // self.proposals_vote_box[proposal_app] = vote.copy()
+    uncover 2
+    box_put
+    // smart_contracts/representative/contract.py:175
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/representative/contract.py:176
+    // mbr_fee = mbr_after - mbr_before
+    swap
+    -
+    // smart_contracts/representative/contract.py:180
+    // payment.receiver == Global.current_application_address
+    dig 1
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/representative/contract.py:178-181
+    // # Check payment
+    // assert (
+    //     payment.receiver == Global.current_application_address
+    // ), err.WRONG_RECEIVER
+    assert // Wrong Receiver
+    // smart_contracts/representative/contract.py:182
+    // assert payment.amount == mbr_fee, err.WRONG_PAYMENT_AMOUNT
+    swap
+    gtxns Amount
+    ==
+    assert // Wrong payment amount
+    // smart_contracts/representative/contract.py:133
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.delete_vote[routing]() -> void:
+delete_vote:
+    // smart_contracts/representative/contract.py:186
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/representative/contract.py:202
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/representative/contract.py:204
+    // assert self.is_representative(), err.UNAUTHORIZED
+    callsub is_representative
+    assert // Unauthorized
+    // smart_contracts/representative/contract.py:207
+    // proposal_id.as_uint64()
+    swap
+    btoi
+    // smart_contracts/proposal/utils.py:11-14
+    // status, exists = op.AppGlobal.get_ex_uint64(
+    //     proposal_id,
+    //     prop_cfg.GS_KEY_STATUS,
+    // )
+    dup
+    // smart_contracts/proposal/utils.py:13
+    // prop_cfg.GS_KEY_STATUS,
+    pushbytes 0x737461747573
+    // smart_contracts/proposal/utils.py:11-14
+    // status, exists = op.AppGlobal.get_ex_uint64(
+    //     proposal_id,
+    //     prop_cfg.GS_KEY_STATUS,
+    // )
+    app_global_get_ex
+    pop
+    // smart_contracts/proposal/utils.py:16
+    // return status == enm.STATUS_VOTING
+    pushint 25 // 25
+    ==
+    // smart_contracts/representative/contract.py:206-208
+    // assert not utils_prop.is_proposal_voting(
+    //     proposal_id.as_uint64()
+    // ), err.PROPOSAL_VOTING
+    !
+    assert // Proposal is in voting stage
+    // smart_contracts/representative/contract.py:211
+    // del self.proposals_vote_box[proposal_app]
+    itob
+    bytec_3 // 0x7076
+    swap
+    concat
+    box_del
+    pop
+    // smart_contracts/representative/contract.py:213
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/representative/contract.py:215-216
+    // # Send freed MBR to creator
+    // mbr_freed = mbr_before - mbr_after
+    -
+    // smart_contracts/representative/contract.py:217-220
+    // itxn.Payment(
+    //     receiver=Global.creator_address,
+    //     amount=mbr_freed,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/representative/contract.py:218
+    // receiver=Global.creator_address,
+    global CreatorAddress
+    itxn_field Receiver
+    itxn_field Amount
+    // smart_contracts/representative/contract.py:217
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/representative/contract.py:217-220
+    // itxn.Payment(
+    //     receiver=Global.creator_address,
+    //     amount=mbr_freed,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/representative/contract.py:186
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.delete[routing]() -> void:
+delete:
+    // smart_contracts/representative/contract.py:304
+    // return Txn.sender == Global.creator_address
+    txn Sender
+    global CreatorAddress
+    ==
+    // smart_contracts/representative/contract.py:236
+    // assert self.is_creator(), err.NOT_CREATOR
+    assert // Sender is not app creator
+    // smart_contracts/representative/contract.py:239
+    // Global.current_application_address.min_balance == Global.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    global MinBalance
+    ==
+    // smart_contracts/representative/contract.py:238-240
+    // assert (
+    //     Global.current_application_address.min_balance == Global.min_balance
+    // ), err.UNDELETED_BOXES
+    assert // Not all boxes deleted
+    // smart_contracts/representative/contract.py:242-246
+    // itxn.Payment(
+    //     receiver=Global.creator_address,
+    //     amount=UInt64(0),
+    //     close_remainder_to=Global.creator_address,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/representative/contract.py:243
+    // receiver=Global.creator_address,
+    global CreatorAddress
+    // smart_contracts/representative/contract.py:245
+    // close_remainder_to=Global.creator_address,
+    dup
+    itxn_field CloseRemainderTo
+    // smart_contracts/representative/contract.py:244
+    // amount=UInt64(0),
+    intc_0 // 0
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/representative/contract.py:242
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/representative/contract.py:242-246
+    // itxn.Payment(
+    //     receiver=Global.creator_address,
+    //     amount=UInt64(0),
+    //     close_remainder_to=Global.creator_address,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/representative/contract.py:224
+    // @arc4.abimethod(allow_actions=("DeleteApplication",))
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.get_vote_box[routing]() -> void:
+get_vote_box:
+    // smart_contracts/representative/contract.py:250-253
+    // # ---------------------------------
+    // # -------- Getter methods ---------
+    // # ---------------------------------
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    callsub smart_contracts.representative.contract.Representative.get_vote_box
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    concat
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.representative.contract.Representative.get_vote[routing]() -> void:
+get_vote:
+    // smart_contracts/representative/contract.py:278
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/representative/contract.py:293
+    // [val, exists] = self.get_vote_box(proposal_id)
+    callsub smart_contracts.representative.contract.Representative.get_vote_box
+    // smart_contracts/representative/contract.py:295
+    // is_valid = exists and self.paused.value == UInt64(0)
+    bz get_vote_bool_false@4
+    intc_0 // 0
+    bytec_0 // 0x706175736564
+    app_global_get_ex
+    assert // check self.paused exists
+    bnz get_vote_bool_false@4
+    intc_1 // 1
+
+get_vote_bool_merge@5:
+    // smart_contracts/representative/contract.py:278
+    // @arc4.abimethod(readonly=True)
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    dig 1
+    swap
+    concat
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+get_vote_bool_false@4:
+    intc_0 // 0
+    b get_vote_bool_merge@5
+
+
+// smart_contracts.representative.contract.Representative.get_vote_box(proposal_id: bytes) -> bytes, uint64:
+smart_contracts.representative.contract.Representative.get_vote_box:
+    // smart_contracts/representative/contract.py:250-257
+    // # ---------------------------------
+    // # -------- Getter methods ---------
+    // # ---------------------------------
+    // @arc4.abimethod(readonly=True)
+    // def get_vote_box(
+    //     self,
+    //     proposal_id: arc4.UInt64,
+    // ) -> tuple[typ.Vote, bool]:
+    proto 1 2
+    // smart_contracts/representative/contract.py:268
+    // proposal_app = Application(proposal_id.as_uint64())
+    frame_dig -1
+    btoi
+    // smart_contracts/representative/contract.py:270
+    // exists = proposal_app in self.proposals_vote_box
+    itob
+    bytec_3 // 0x7076
+    swap
+    concat
+    dup
+    box_len
+    dup
+    uncover 2
+    pop
+    // smart_contracts/representative/contract.py:271
+    // if exists:
+    bz smart_contracts.representative.contract.Representative.get_vote_box_else_body@2
+    // smart_contracts/representative/contract.py:272
+    // val = self.proposals_vote_box[proposal_app].copy()
+    frame_dig 0
+    box_get
+    assert // check self.proposals_vote_box entry exists
+
+smart_contracts.representative.contract.Representative.get_vote_box_after_if_else@3:
+    // smart_contracts/representative/contract.py:276
+    // return val.copy(), exists
+    frame_dig 1
+    uncover 3
+    uncover 3
+    retsub
+
+smart_contracts.representative.contract.Representative.get_vote_box_else_body@2:
+    // smart_contracts/representative/contract.py:274
+    // val = typ.Vote(approval=arc4.UInt64(0), rejection=arc4.UInt64(0))
+    pushbytes 0x00000000000000000000000000000000
+    b smart_contracts.representative.contract.Representative.get_vote_box_after_if_else@3
+
+
+// smart_contracts.representative.contract.Representative.is_representative() -> uint64:
+is_representative:
+    // smart_contracts/representative/contract.py:308
+    // return Txn.sender == self.representative_address.value
+    txn Sender
+    intc_0 // 0
+    bytec_1 // 0x726570726573656e7461746976655f61646472657373
+    app_global_get_ex
+    assert // check self.representative_address exists
+    ==
+    retsub

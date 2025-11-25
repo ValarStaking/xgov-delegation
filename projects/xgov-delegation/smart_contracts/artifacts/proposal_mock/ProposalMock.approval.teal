@@ -1,0 +1,289 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 1 0 8 32
+    bytecblock "V" 0x72656769737472795f6170705f6964 0x737461747573 0x766f74655f6f70656e696e675f74696d657374616d70 0x766f74696e675f6475726174696f6e
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/proposal_mock/contract.py:21
+    // key=prop_cfg.GS_KEY_REGISTRY_APP_ID,
+    bytec_1 // 0x72656769737472795f6170705f6964
+    // smart_contracts/proposal_mock/contract.py:20
+    // UInt64(),
+    intc_1 // 0
+    // smart_contracts/proposal_mock/contract.py:19-22
+    // self.registry_app_id = GlobalState(
+    //     UInt64(),
+    //     key=prop_cfg.GS_KEY_REGISTRY_APP_ID,
+    // )
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:25
+    // key=prop_cfg.GS_KEY_STATUS,
+    bytec_2 // 0x737461747573
+    // smart_contracts/proposal_mock/contract.py:24
+    // UInt64(enm.STATUS_EMPTY),
+    intc_1 // 0
+    // smart_contracts/proposal_mock/contract.py:23-26
+    // self.status = GlobalState(
+    //     UInt64(enm.STATUS_EMPTY),
+    //     key=prop_cfg.GS_KEY_STATUS,
+    // )
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:29
+    // key=prop_cfg.GS_KEY_VOTE_OPEN_TS,
+    bytec_3 // 0x766f74655f6f70656e696e675f74696d657374616d70
+    // smart_contracts/proposal_mock/contract.py:28
+    // UInt64(),
+    intc_1 // 0
+    // smart_contracts/proposal_mock/contract.py:27-30
+    // self.vote_open_ts = GlobalState(
+    //     UInt64(),
+    //     key=prop_cfg.GS_KEY_VOTE_OPEN_TS,
+    // )
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:33
+    // key=prop_cfg.GS_KEY_VOTING_DURATION,
+    bytec 4 // 0x766f74696e675f6475726174696f6e
+    // smart_contracts/proposal_mock/contract.py:32
+    // UInt64(),
+    intc_1 // 0
+    // smart_contracts/proposal_mock/contract.py:31-34
+    // self.voting_duration = GlobalState(
+    //     UInt64(),
+    //     key=prop_cfg.GS_KEY_VOTING_DURATION,
+    // )
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/proposal_mock/contract.py:17
+    // class ProposalMock(ARC4Contract, avm_version=10):
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    bz main_create_NoOp@13
+    pushbytess 0x1394cc3c 0xae5ac10f 0xb4f4f9a9 0xbb8e1d68 0xf30ffbba 0x5d874736 0x24615f90 // method "set_status(uint64)void", method "set_vote_open_ts(uint64)void", method "set_voting_duration(uint64)void", method "vote(address,uint64,uint64)void", method "set_voter_box(address,uint64)void", method "del_voter_box(address)void", method "get_voter_box(address)(uint64,bool)"
+    txna ApplicationArgs 0
+    match set_status set_vote_open_ts set_voting_duration vote set_voter_box del_voter_box get_voter_box
+    err
+
+main_create_NoOp@13:
+    // smart_contracts/proposal_mock/contract.py:17
+    // class ProposalMock(ARC4Contract, avm_version=10):
+    pushbytes 0x4c5c61ba // method "create()void"
+    txna ApplicationArgs 0
+    match create
+    err
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.create[routing]() -> void:
+create:
+    // smart_contracts/proposal_mock/contract.py:47
+    // self.registry_app_id.value = Global.caller_application_id
+    bytec_1 // 0x72656769737472795f6170705f6964
+    global CallerApplicationID
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:45
+    // @arc4.abimethod(create="require")
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.set_status[routing]() -> void:
+set_status:
+    // smart_contracts/proposal_mock/contract.py:49
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/proposal_mock/contract.py:51
+    // self.status.value = status
+    bytec_2 // 0x737461747573
+    swap
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:49
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.set_vote_open_ts[routing]() -> void:
+set_vote_open_ts:
+    // smart_contracts/proposal_mock/contract.py:53
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/proposal_mock/contract.py:55
+    // self.vote_open_ts.value = vote_open_ts
+    bytec_3 // 0x766f74655f6f70656e696e675f74696d657374616d70
+    swap
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:53
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.set_voting_duration[routing]() -> void:
+set_voting_duration:
+    // smart_contracts/proposal_mock/contract.py:57
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/proposal_mock/contract.py:59
+    // self.voting_duration.value = voting_duration
+    bytec 4 // 0x766f74696e675f6475726174696f6e
+    swap
+    app_global_put
+    // smart_contracts/proposal_mock/contract.py:57
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.vote[routing]() -> void:
+vote:
+    // smart_contracts/proposal_mock/contract.py:61
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 3
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.set_voter_box[routing]() -> void:
+set_voter_box:
+    // smart_contracts/proposal_mock/contract.py:70
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/proposal_mock/contract.py:83
+    // self.voters[voter_address.native] = votes.as_uint64()
+    btoi
+    bytec_0 // "V"
+    uncover 2
+    concat
+    swap
+    itob
+    box_put
+    // smart_contracts/proposal_mock/contract.py:70
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.del_voter_box[routing]() -> void:
+del_voter_box:
+    // smart_contracts/proposal_mock/contract.py:87
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/proposal_mock/contract.py:98
+    // del self.voters[voter_address.native]
+    bytec_0 // "V"
+    swap
+    concat
+    box_del
+    pop
+    // smart_contracts/proposal_mock/contract.py:87
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
+// smart_contracts.proposal_mock.contract.ProposalMock.get_voter_box[routing]() -> void:
+get_voter_box:
+    // smart_contracts/proposal_mock/contract.py:102
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/proposal_mock/contract.py:114
+    // exists = voter_address.native in self.voters
+    bytec_0 // "V"
+    swap
+    concat
+    dup
+    box_len
+    dup
+    uncover 2
+    pop
+    // smart_contracts/proposal_mock/contract.py:115
+    // if exists:
+    bz get_voter_box_else_body@3
+    // smart_contracts/proposal_mock/contract.py:116
+    // votes = self.voters[voter_address.native]
+    dig 1
+    box_get
+    assert // check self.voters entry exists
+    btoi
+
+get_voter_box_after_if_else@4:
+    // smart_contracts/proposal_mock/contract.py:120
+    // return arc4.UInt64(votes), exists
+    itob
+    // smart_contracts/proposal_mock/contract.py:102
+    // @arc4.abimethod(readonly=True)
+    pushbytes 0x00
+    intc_1 // 0
+    dig 3
+    setbit
+    concat
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+get_voter_box_else_body@3:
+    // smart_contracts/proposal_mock/contract.py:118
+    // votes = UInt64(0)
+    intc_1 // 0
+    b get_voter_box_after_if_else@4

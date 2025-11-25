@@ -1,0 +1,2152 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 1 32 6
+    bytecblock 0x7061757365645f7265676973747279 0x766f7465735f6c656674 0x6d616e616765725f61646472657373 0x76 0x151f7c75 0x78676f765f72656769737472795f617070 0x766f74655f747269676765725f6177617264 0x72 0x747269676765725f66756e64 0x766f74655f66656573 0x73635f766f74 0x0a810143 0x73635f726570 0x726570726573656e7461746976655f666565 0xa0e81872 0x27630d65 0x24378d3c TMPL_entropy
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/delegation_registry/contract.py:46-47
+    // # Preconditions
+    // assert Txn.global_num_byte_slice == cfg.GLOBAL_BYTES, err.WRONG_GLOBAL_BYTES
+    txn GlobalNumByteSlice
+    intc_2 // 32
+    ==
+    assert // Wrong Global Bytes allocation
+    // smart_contracts/delegation_registry/contract.py:48
+    // assert Txn.global_num_uint == cfg.GLOBAL_UINTS, err.WRONG_GLOBAL_UINTS
+    txn GlobalNumUint
+    intc_2 // 32
+    ==
+    assert // Wrong Global UInts allocation
+    // smart_contracts/delegation_registry/contract.py:49
+    // assert Txn.local_num_byte_slice == cfg.LOCAL_BYTES, err.WRONG_LOCAL_BYTES
+    txn LocalNumByteSlice
+    !
+    assert // Wrong Local Bytes allocation
+    // smart_contracts/delegation_registry/contract.py:50
+    // assert Txn.local_num_uint == cfg.LOCAL_UINTS, err.WRONG_LOCAL_UINTS
+    txn LocalNumUint
+    !
+    assert // Wrong Local UInts allocation
+    // smart_contracts/delegation_registry/contract.py:55
+    // key=cfg.GS_KEY_MANAGER_ADDRESS,
+    bytec_2 // 0x6d616e616765725f61646472657373
+    // smart_contracts/delegation_registry/contract.py:54
+    // arc4.Address(),
+    global ZeroAddress
+    // smart_contracts/delegation_registry/contract.py:52-56
+    // # Global Variables
+    // self.manager_address = GlobalState(
+    //     arc4.Address(),
+    //     key=cfg.GS_KEY_MANAGER_ADDRESS,
+    // )
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:59
+    // key=cfg.GS_KEY_XGOV_REGISTRY_APP,
+    bytec 5 // 0x78676f765f72656769737472795f617070
+    // smart_contracts/delegation_registry/contract.py:58
+    // Application(),
+    intc_0 // 0
+    // smart_contracts/delegation_registry/contract.py:57-60
+    // self.xgov_registry_app = GlobalState(
+    //     Application(),
+    //     key=cfg.GS_KEY_XGOV_REGISTRY_APP,
+    // )
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:67
+    // key=cfg.GS_KEY_REPRESENTATIVE_FEE,
+    bytec 13 // 0x726570726573656e7461746976655f666565
+    // smart_contracts/delegation_registry/contract.py:66
+    // UInt64(),
+    intc_0 // 0
+    // smart_contracts/delegation_registry/contract.py:65-68
+    // self.representative_fee = GlobalState(
+    //     UInt64(),
+    //     key=cfg.GS_KEY_REPRESENTATIVE_FEE,
+    // )
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:71
+    // key=cfg.GS_KEY_VOTE_TRIGGER_AWARD,
+    bytec 6 // 0x766f74655f747269676765725f6177617264
+    // smart_contracts/delegation_registry/contract.py:70
+    // UInt64(),
+    intc_0 // 0
+    // smart_contracts/delegation_registry/contract.py:69-72
+    // self.vote_trigger_award = GlobalState(
+    //     UInt64(),
+    //     key=cfg.GS_KEY_VOTE_TRIGGER_AWARD,
+    // )
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:73
+    // self.paused_registry = GlobalState(UInt64(), key=cfg.GS_KEY_PAUSED_REGISTRY)
+    bytec_0 // 0x7061757365645f7265676973747279
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:74
+    // self.votes_left = GlobalState(UInt64(), key=cfg.GS_KEY_VOTES_LEFT)
+    bytec_1 // 0x766f7465735f6c656674
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:75
+    // self.trigger_fund = GlobalState(UInt64(), key=cfg.GS_KEY_TRIGGER_FUND)
+    bytec 8 // 0x747269676765725f66756e64
+    intc_0 // 0
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/delegation_registry/contract.py:35-44
+    // class DelegationRegistry(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    pushbytes 0xe287be50 // method "update_registry()void"
+    txna ApplicationArgs 0
+    match main_update_registry_route@4
+
+main_switch_case_next@5:
+    // smart_contracts/delegation_registry/contract.py:35-44
+    // class DelegationRegistry(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    bz main_create_NoOp@26
+    pushbytess 0x9667d6de 0x3d8e6faf 0xb3b58482 0x86f7e0e6 0x98352e86 0xa399eb27 0xaa55b2f4 0xc8b8bc8e 0x798851d3 0x9d92a81f 0x114a4cfb 0xaf3c53e8 0x94cc9e66 0x54205259 0x5f08c147 0xb10a1c00 0x131a2dd1 0xca6877b3 // method "set_manager(address)void", method "config_delegation_registry((uint64,uint64),uint64,uint64)void", method "withdraw_balance()void", method "pause_registry()void", method "resume_registry()void", method "init_contract(byte[6],uint64)void", method "load_contract(byte[6],uint64,byte[])void", method "key_reg_registry(pay,(uint64,uint64,uint64,byte[32],byte[32],byte[64]))void", method "update_voter(address)void", method "update_representative(address)void", method "register_voter(pay,address,address,uint64)uint64", method "add_votes(pay,address,uint64)void", method "trigger_vote(address,uint64)void", method "unregister_voter(address)void", method "register_representative(pay)uint64", method "unregister_representative()void", method "get_voter_app_id(address)(uint64,bool)", method "get_representative_app_id(address)(uint64,bool)"
+    txna ApplicationArgs 0
+    match set_manager config_delegation_registry withdraw_balance pause_registry resume_registry init_contract load_contract key_reg_registry update_voter update_representative register_voter add_votes trigger_vote unregister_voter register_representative unregister_representative get_voter_app_id get_representative_app_id
+    err
+
+main_create_NoOp@26:
+    // smart_contracts/delegation_registry/contract.py:35-44
+    // class DelegationRegistry(
+    //     ARC4Contract,
+    //     avm_version=10,
+    //     state_totals=StateTotals(
+    //         global_bytes=cfg.GLOBAL_BYTES,
+    //         global_uints=cfg.GLOBAL_UINTS,
+    //         local_bytes=cfg.LOCAL_BYTES,
+    //         local_uints=cfg.LOCAL_UINTS,
+    //     ),
+    // ):
+    pushbytes 0x240d2f67 // method "create(uint64)void"
+    txna ApplicationArgs 0
+    match create
+    err
+
+main_update_registry_route@4:
+    // smart_contracts/delegation_registry/contract.py:328
+    // @arc4.abimethod(allow_actions=["UpdateApplication"])
+    txn OnCompletion
+    pushint 4 // UpdateApplication
+    ==
+    txn ApplicationID
+    &&
+    assert // OnCompletion must be UpdateApplication && can only call when not creating
+    b update_registry
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.create[routing]() -> void:
+create:
+    // smart_contracts/delegation_registry/contract.py:94-97
+    // # ---------------------------------
+    // # ---------- Management  ----------
+    // # ---------------------------------
+    // @arc4.abimethod(create="require")
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:109
+    // self.manager_address.value = arc4.Address(Txn.sender)
+    bytec_2 // 0x6d616e616765725f61646472657373
+    txn Sender
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:110
+    // self.xgov_registry_app.value = Application(xgov_registry_id.as_uint64())
+    btoi
+    bytec 5 // 0x78676f765f72656769737472795f617070
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:111
+    // self.paused_registry.value = UInt64(1)
+    bytec_0 // 0x7061757365645f7265676973747279
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:829
+    // return TemplateVar[Bytes]("entropy")  # trick to allow fresh deployment
+    bytec 17 // TMPL_entropy
+    // smart_contracts/delegation_registry/contract.py:112
+    // assert self.entropy() == TemplateVar[Bytes]("entropy")
+    dup
+    ==
+    // smart_contracts/delegation_registry/contract.py:94-97
+    // # ---------------------------------
+    // # ---------- Management  ----------
+    // # ---------------------------------
+    // @arc4.abimethod(create="require")
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.set_manager[routing]() -> void:
+set_manager:
+    // smart_contracts/delegation_registry/contract.py:116
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:128
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:129
+    // self.manager_address.value = manager
+    bytec_2 // 0x6d616e616765725f61646472657373
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:116
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.config_delegation_registry[routing]() -> void:
+config_delegation_registry:
+    // smart_contracts/delegation_registry/contract.py:131
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 16 // 16
+    ==
+    assert // invalid number of bytes for smart_contracts.common.abi_types.Fees
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 3
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:152
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:154
+    // self.vote_fees.value = vote_fees.copy()
+    bytec 9 // 0x766f74655f66656573
+    uncover 3
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:155
+    // self.representative_fee.value = representative_fee.as_uint64()
+    swap
+    btoi
+    bytec 13 // 0x726570726573656e7461746976655f666565
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:156
+    // self.vote_trigger_award.value = vote_trigger_award.as_uint64()
+    btoi
+    bytec 6 // 0x766f74655f747269676765725f6177617264
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:158-159
+    // # Recalculate needed trigger fund
+    // self.update_trigger_fund()
+    callsub update_trigger_fund
+    // smart_contracts/delegation_registry/contract.py:163
+    // self.trigger_fund.value
+    intc_0 // 0
+    bytec 8 // 0x747269676765725f66756e64
+    app_global_get_ex
+    assert // check self.trigger_fund exists
+    // smart_contracts/delegation_registry/contract.py:164
+    // <= Global.current_application_address.balance
+    global CurrentApplicationAddress
+    acct_params_get AcctBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:165
+    // - Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:164-165
+    // <= Global.current_application_address.balance
+    // - Global.current_application_address.min_balance
+    -
+    // smart_contracts/delegation_registry/contract.py:163-165
+    // self.trigger_fund.value
+    // <= Global.current_application_address.balance
+    // - Global.current_application_address.min_balance
+    <=
+    // smart_contracts/delegation_registry/contract.py:161-166
+    // # Validate config
+    // assert (
+    //     self.trigger_fund.value
+    //     <= Global.current_application_address.balance
+    //     - Global.current_application_address.min_balance
+    // ), err.TRIGGER_FUND_INSUFFICIENT
+    assert // Trigger fund is insufficient. Fund the Registry or reduce award.
+    // smart_contracts/delegation_registry/contract.py:169
+    // self.vote_fees.value.xgov <= self.vote_fees.value.other
+    intc_0 // 0
+    bytec 9 // 0x766f74655f66656573
+    app_global_get_ex
+    assert // check self.vote_fees exists
+    dup
+    extract 0 8
+    swap
+    extract 8 8
+    dig 1
+    b>=
+    // smart_contracts/delegation_registry/contract.py:168-170
+    // assert (
+    //     self.vote_fees.value.xgov <= self.vote_fees.value.other
+    // ), err.INCONSISTENT_VOTE_FEES
+    assert // xGov vote fees must not be larger than for others
+    // smart_contracts/delegation_registry/contract.py:173
+    // self.vote_trigger_award.value <= self.vote_fees.value.xgov
+    intc_0 // 0
+    bytec 6 // 0x766f74655f747269676765725f6177617264
+    app_global_get_ex
+    assert // check self.vote_trigger_award exists
+    itob
+    b>=
+    // smart_contracts/delegation_registry/contract.py:172-174
+    // assert (
+    //     self.vote_trigger_award.value <= self.vote_fees.value.xgov
+    // ), err.INCONSISTENT_TRIGGER_AWARD
+    assert // Trigger reward must not be larger than minimum vote fees
+    // smart_contracts/delegation_registry/contract.py:131
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.withdraw_balance[routing]() -> void:
+withdraw_balance:
+    // smart_contracts/delegation_registry/contract.py:188
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:192
+    // Global.current_application_address.balance
+    global CurrentApplicationAddress
+    acct_params_get AcctBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:193
+    // - Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:192-193
+    // Global.current_application_address.balance
+    // - Global.current_application_address.min_balance
+    -
+    // smart_contracts/delegation_registry/contract.py:194
+    // - self.trigger_fund.value
+    intc_0 // 0
+    bytec 8 // 0x747269676765725f66756e64
+    app_global_get_ex
+    assert // check self.trigger_fund exists
+    // smart_contracts/delegation_registry/contract.py:192-194
+    // Global.current_application_address.balance
+    // - Global.current_application_address.min_balance
+    // - self.trigger_fund.value
+    -
+    // smart_contracts/delegation_registry/contract.py:197
+    // assert amount > 0, err.INSUFFICIENT_FUNDS
+    dup
+    assert // Insufficient funds
+    // smart_contracts/delegation_registry/contract.py:198-201
+    // itxn.Payment(
+    //     receiver=self.manager_address.value.native,
+    //     amount=amount,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:199
+    // receiver=self.manager_address.value.native,
+    intc_0 // 0
+    bytec_2 // 0x6d616e616765725f61646472657373
+    app_global_get_ex
+    assert // check self.manager_address exists
+    itxn_field Receiver
+    itxn_field Amount
+    // smart_contracts/delegation_registry/contract.py:198
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:198-201
+    // itxn.Payment(
+    //     receiver=self.manager_address.value.native,
+    //     amount=amount,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:178
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.pause_registry[routing]() -> void:
+pause_registry:
+    // smart_contracts/delegation_registry/contract.py:214
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:215
+    // self.paused_registry.value = UInt64(1)
+    bytec_0 // 0x7061757365645f7265676973747279
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:205
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.resume_registry[routing]() -> void:
+resume_registry:
+    // smart_contracts/delegation_registry/contract.py:228
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:229
+    // self.paused_registry.value = UInt64(0)
+    bytec_0 // 0x7061757365645f7265676973747279
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:219
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.init_contract[routing]() -> void:
+init_contract:
+    // smart_contracts/delegation_registry/contract.py:233
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dupn 2
+    len
+    intc_3 // 6
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 6>
+    txna ApplicationArgs 2
+    dup
+    cover 3
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:250
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:253
+    // contents, exists = box.maybe()
+    box_len
+    bury 1
+    // smart_contracts/delegation_registry/contract.py:254
+    // if exists:
+    bz init_contract_else_body@3
+    // smart_contracts/delegation_registry/contract.py:255
+    // box.resize(size.as_uint64())
+    swap
+    btoi
+    box_resize
+
+init_contract_after_if_else@4:
+    // smart_contracts/delegation_registry/contract.py:233
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+init_contract_else_body@3:
+    // smart_contracts/delegation_registry/contract.py:257-258
+    // # Initialize the approval program
+    // box.create(size=size.as_uint64())
+    swap
+    btoi
+    box_create
+    pop
+    b init_contract_after_if_else@4
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.load_contract[routing]() -> void:
+load_contract:
+    // smart_contracts/delegation_registry/contract.py:262
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 6
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 6>
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    pushint 2 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/delegation_registry/contract.py:281
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:285-286
+    // # Load the approval program
+    // box.replace(start_index=offset.as_uint64(), value=data)
+    swap
+    btoi
+    swap
+    box_replace
+    // smart_contracts/delegation_registry/contract.py:262
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.key_reg_registry[routing]() -> void:
+key_reg_registry:
+    // smart_contracts/delegation_registry/contract.py:290
+    // @arc4.abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 152 // 152
+    ==
+    assert // invalid number of bytes for smart_contracts.common.abi_types.KeyRegTxnInfo
+    // smart_contracts/delegation_registry/contract.py:307
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:311
+    // payment.receiver == Global.current_application_address
+    dig 1
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/delegation_registry/contract.py:309-312
+    // # Check if payment for covering the key reg fee was made to this contract
+    // assert (
+    //     payment.receiver == Global.current_application_address
+    // ), err.WRONG_RECEIVER
+    assert // Wrong Receiver
+    // smart_contracts/delegation_registry/contract.py:313
+    // key_reg_txn_fee = payment.amount
+    swap
+    gtxns Amount
+    // smart_contracts/delegation_registry/contract.py:315-324
+    // # Issue the key registration transaction
+    // itxn.KeyRegistration(
+    //     vote_key=key_reg_info.vote_pk.bytes,
+    //     selection_key=key_reg_info.selection_pk.bytes,
+    //     vote_first=key_reg_info.vote_first.as_uint64(),
+    //     vote_last=key_reg_info.vote_last.as_uint64(),
+    //     vote_key_dilution=key_reg_info.vote_key_dilution.as_uint64(),
+    //     state_proof_key=key_reg_info.state_proof_pk.bytes,
+    //     fee=key_reg_txn_fee,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:317
+    // vote_key=key_reg_info.vote_pk.bytes,
+    dig 1
+    extract 24 32
+    // smart_contracts/delegation_registry/contract.py:318
+    // selection_key=key_reg_info.selection_pk.bytes,
+    dig 2
+    extract 56 32
+    // smart_contracts/delegation_registry/contract.py:319
+    // vote_first=key_reg_info.vote_first.as_uint64(),
+    dig 3
+    intc_0 // 0
+    extract_uint64
+    // smart_contracts/delegation_registry/contract.py:320
+    // vote_last=key_reg_info.vote_last.as_uint64(),
+    dig 4
+    pushint 8 // 8
+    extract_uint64
+    // smart_contracts/delegation_registry/contract.py:321
+    // vote_key_dilution=key_reg_info.vote_key_dilution.as_uint64(),
+    dig 5
+    pushint 16 // 16
+    extract_uint64
+    // smart_contracts/delegation_registry/contract.py:322
+    // state_proof_key=key_reg_info.state_proof_pk.bytes,
+    uncover 6
+    extract 88 64
+    itxn_field StateProofPK
+    itxn_field VoteKeyDilution
+    itxn_field VoteLast
+    itxn_field VoteFirst
+    itxn_field SelectionPK
+    itxn_field VotePK
+    // smart_contracts/delegation_registry/contract.py:315-316
+    // # Issue the key registration transaction
+    // itxn.KeyRegistration(
+    pushint 2 // keyreg
+    itxn_field TypeEnum
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:315-324
+    // # Issue the key registration transaction
+    // itxn.KeyRegistration(
+    //     vote_key=key_reg_info.vote_pk.bytes,
+    //     selection_key=key_reg_info.selection_pk.bytes,
+    //     vote_first=key_reg_info.vote_first.as_uint64(),
+    //     vote_last=key_reg_info.vote_last.as_uint64(),
+    //     vote_key_dilution=key_reg_info.vote_key_dilution.as_uint64(),
+    //     state_proof_key=key_reg_info.state_proof_pk.bytes,
+    //     fee=key_reg_txn_fee,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:290
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.update_registry[routing]() -> void:
+update_registry:
+    // smart_contracts/delegation_registry/contract.py:337
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:328
+    // @arc4.abimethod(allow_actions=["UpdateApplication"])
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.update_voter[routing]() -> void:
+update_voter:
+    // smart_contracts/delegation_registry/contract.py:341
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:356
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:358
+    // assert xgov_address in self.voters_box, err.NOT_VOTER
+    bytec_3 // 0x76
+    swap
+    concat
+    dup
+    box_len
+    bury 1
+    assert // Not Voter
+    // smart_contracts/delegation_registry/contract.py:360
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
+    bytec 10 // 0x73635f766f74
+    // smart_contracts/delegation_registry/contract.py:361-362
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    box_len
+    assert // check Box exists
+    // smart_contracts/delegation_registry/contract.py:360
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
+    bytec 10 // 0x73635f766f74
+    // smart_contracts/delegation_registry/contract.py:361-362
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    intc_0 // 0
+    uncover 2
+    box_extract
+    // smart_contracts/delegation_registry/contract.py:364-369
+    // arc4.abi_call(
+    //     voter_contract.Voter.update,
+    //     app_id=self.voters_box[xgov_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:366
+    // app_id=self.voters_box[xgov_address],
+    swap
+    box_get
+    pop
+    btoi
+    // smart_contracts/delegation_registry/contract.py:364-369
+    // arc4.abi_call(
+    //     voter_contract.Voter.update,
+    //     app_id=self.voters_box[xgov_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    pushint 4 // UpdateApplication
+    itxn_field OnCompletion
+    // smart_contracts/delegation_registry/contract.py:368
+    // clear_state_program=const.MIN_PROGRAM,
+    bytec 11 // 0x0a810143
+    itxn_field ClearStateProgramPages
+    itxn_field ApplicationID
+    itxn_field ApprovalProgramPages
+    // smart_contracts/delegation_registry/contract.py:364-369
+    // arc4.abi_call(
+    //     voter_contract.Voter.update,
+    //     app_id=self.voters_box[xgov_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    bytec 14 // method "update()void"
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:341
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.update_representative[routing]() -> void:
+update_representative:
+    // smart_contracts/delegation_registry/contract.py:373
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:388
+    // assert self.is_manager(), err.UNAUTHORIZED
+    callsub is_manager
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:391
+    // representative_address in self.representatives_box
+    bytec 7 // 0x72
+    swap
+    concat
+    dup
+    box_len
+    bury 1
+    // smart_contracts/delegation_registry/contract.py:390-392
+    // assert (
+    //     representative_address in self.representatives_box
+    // ), err.NOT_REPRESENTATIVE
+    assert // Not a representative
+    // smart_contracts/delegation_registry/contract.py:394
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_REPRESENTATIVE_BOX))
+    bytec 12 // 0x73635f726570
+    // smart_contracts/delegation_registry/contract.py:395-396
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    box_len
+    assert // check Box exists
+    // smart_contracts/delegation_registry/contract.py:394
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_REPRESENTATIVE_BOX))
+    bytec 12 // 0x73635f726570
+    // smart_contracts/delegation_registry/contract.py:395-396
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    intc_0 // 0
+    uncover 2
+    box_extract
+    // smart_contracts/delegation_registry/contract.py:398-403
+    // arc4.abi_call(
+    //     representative_contract.Representative.update,
+    //     app_id=self.representatives_box[representative_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:400
+    // app_id=self.representatives_box[representative_address],
+    swap
+    box_get
+    pop
+    btoi
+    // smart_contracts/delegation_registry/contract.py:398-403
+    // arc4.abi_call(
+    //     representative_contract.Representative.update,
+    //     app_id=self.representatives_box[representative_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    pushint 4 // UpdateApplication
+    itxn_field OnCompletion
+    // smart_contracts/delegation_registry/contract.py:402
+    // clear_state_program=const.MIN_PROGRAM,
+    bytec 11 // 0x0a810143
+    itxn_field ClearStateProgramPages
+    itxn_field ApplicationID
+    itxn_field ApprovalProgramPages
+    // smart_contracts/delegation_registry/contract.py:398-403
+    // arc4.abi_call(
+    //     representative_contract.Representative.update,
+    //     app_id=self.representatives_box[representative_address],
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    // )
+    bytec 14 // method "update()void"
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:373
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.register_voter[routing]() -> void:
+register_voter:
+    // smart_contracts/delegation_registry/contract.py:407-410
+    // # ---------------------------------
+    // # ----------    Voter    ----------
+    // # ---------------------------------
+    // @arc4.abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 3
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:440
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:442
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:443
+    // assert xgov_address not in self.voters_box, err.ALREADY_VOTER
+    bytec_3 // 0x76
+    dig 4
+    concat
+    dup
+    box_len
+    bury 1
+    !
+    assert // Already a Voter
+    // smart_contracts/delegation_registry/contract.py:446
+    // representative_address in self.representatives_box
+    bytec 7 // 0x72
+    uncover 4
+    concat
+    dup
+    box_len
+    bury 1
+    // smart_contracts/delegation_registry/contract.py:445-447
+    // assert (
+    //     representative_address in self.representatives_box
+    // ), err.NOT_REPRESENTATIVE
+    assert // Not a representative
+    // smart_contracts/delegation_registry/contract.py:449-454
+    // # Get xgov_address box
+    // [xgov_box, exists], txn = arc4.abi_call(
+    //     IXGovRegistry.get_xgov_box,
+    //     xgov_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:453
+    // app_id=self.xgov_registry_app.value,
+    intc_0 // 0
+    bytec 5 // 0x78676f765f72656769737472795f617070
+    app_global_get_ex
+    assert // check self.xgov_registry_app exists
+    itxn_field ApplicationID
+    // smart_contracts/delegation_registry/contract.py:449-454
+    // # Get xgov_address box
+    // [xgov_box, exists], txn = arc4.abi_call(
+    //     IXGovRegistry.get_xgov_box,
+    //     xgov_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    bytec 15 // method "get_xgov_box(address)((address,uint64,uint64,uint64),bool)"
+    itxn_field ApplicationArgs
+    dig 4
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    itxn LastLog
+    dup
+    extract 4 0
+    dup
+    len
+    pushint 57 // 57
+    ==
+    assert // invalid number of bytes for arc4.tuple<smart_contracts.common.abi_types.XGovBoxValue,arc4.bool>
+    dig 1
+    extract 0 4
+    bytec 4 // 0x151f7c75
+    ==
+    assert // application log value is not the result of an ABI return
+    swap
+    extract 4 56
+    swap
+    pushint 448 // 448
+    getbit
+    // smart_contracts/delegation_registry/contract.py:455
+    // assert exists, err.NOT_XGOV
+    assert // Not an xGov
+    // smart_contracts/delegation_registry/contract.py:457
+    // manager_address = xgov_box.voting_address
+    extract 0 32
+    // smart_contracts/delegation_registry/contract.py:458
+    // is_manager = arc4.Address(Txn.sender) == manager_address
+    txn Sender
+    ==
+    // smart_contracts/delegation_registry/contract.py:459
+    // is_xgov = arc4.Address(Txn.sender) == xgov_address
+    txn Sender
+    dig 6
+    ==
+    // smart_contracts/delegation_registry/contract.py:460
+    // assert is_xgov or is_manager, err.UNAUTHORIZED
+    ||
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:462
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
+    bytec 10 // 0x73635f766f74
+    // smart_contracts/delegation_registry/contract.py:463-464
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    box_len
+    assert // check Box exists
+    // smart_contracts/delegation_registry/contract.py:462
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
+    bytec 10 // 0x73635f766f74
+    // smart_contracts/delegation_registry/contract.py:463-464
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    intc_0 // 0
+    uncover 2
+    box_extract
+    // smart_contracts/delegation_registry/contract.py:466-479
+    // txn = arc4.abi_call(
+    //     voter_contract.Voter.create,
+    //     xgov_address,
+    //     arc4.Address(Txn.sender),
+    //     self.representatives_box[representative_address].id,
+    //     window_ts,
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    //     global_num_uint=voter_cfg.GLOBAL_UINTS,
+    //     global_num_bytes=voter_cfg.GLOBAL_BYTES,
+    //     local_num_uint=voter_cfg.LOCAL_UINTS,
+    //     local_num_bytes=voter_cfg.LOCAL_BYTES,
+    //     extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:469
+    // arc4.Address(Txn.sender),
+    txn Sender
+    // smart_contracts/delegation_registry/contract.py:470
+    // self.representatives_box[representative_address].id,
+    uncover 2
+    box_get
+    pop
+    btoi
+    itob
+    // smart_contracts/delegation_registry/contract.py:478
+    // extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    pushint 3 // 3
+    itxn_field ExtraProgramPages
+    // smart_contracts/delegation_registry/contract.py:477
+    // local_num_bytes=voter_cfg.LOCAL_BYTES,
+    pushint 8 // 8
+    itxn_field LocalNumByteSlice
+    // smart_contracts/delegation_registry/contract.py:476
+    // local_num_uint=voter_cfg.LOCAL_UINTS,
+    pushint 8 // 8
+    itxn_field LocalNumUint
+    // smart_contracts/delegation_registry/contract.py:475
+    // global_num_bytes=voter_cfg.GLOBAL_BYTES,
+    intc_2 // 32
+    itxn_field GlobalNumByteSlice
+    // smart_contracts/delegation_registry/contract.py:474
+    // global_num_uint=voter_cfg.GLOBAL_UINTS,
+    intc_2 // 32
+    itxn_field GlobalNumUint
+    // smart_contracts/delegation_registry/contract.py:473
+    // clear_state_program=const.MIN_PROGRAM,
+    bytec 11 // 0x0a810143
+    itxn_field ClearStateProgramPages
+    uncover 2
+    itxn_field ApprovalProgramPages
+    // smart_contracts/delegation_registry/contract.py:466-479
+    // txn = arc4.abi_call(
+    //     voter_contract.Voter.create,
+    //     xgov_address,
+    //     arc4.Address(Txn.sender),
+    //     self.representatives_box[representative_address].id,
+    //     window_ts,
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    //     global_num_uint=voter_cfg.GLOBAL_UINTS,
+    //     global_num_bytes=voter_cfg.GLOBAL_BYTES,
+    //     local_num_uint=voter_cfg.LOCAL_UINTS,
+    //     local_num_bytes=voter_cfg.LOCAL_BYTES,
+    //     extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    // )
+    pushbytes 0x79bca08b // method "create(address,address,uint64,uint64)void"
+    itxn_field ApplicationArgs
+    uncover 5
+    itxn_field ApplicationArgs
+    swap
+    itxn_field ApplicationArgs
+    itxn_field ApplicationArgs
+    uncover 2
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    itxn CreatedApplicationID
+    // smart_contracts/delegation_registry/contract.py:481-485
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    //     receiver=txn.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:483
+    // receiver=txn.created_app.address,
+    dup
+    app_params_get AppAddress
+    assert // application exists
+    // smart_contracts/delegation_registry/contract.py:484
+    // amount=Global.min_balance,
+    global MinBalance
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/delegation_registry/contract.py:481-482
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:481-485
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    //     receiver=txn.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:489
+    // self.voters_box[xgov_address] = Application(voter_id)
+    itob
+    swap
+    dig 1
+    box_put
+    // smart_contracts/delegation_registry/contract.py:491
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:492
+    // mbr_fee = mbr_after - mbr_before
+    uncover 2
+    -
+    // smart_contracts/delegation_registry/contract.py:496
+    // payment.receiver == Global.current_application_address
+    dig 2
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/delegation_registry/contract.py:494-497
+    // # Check payment
+    // assert (
+    //     payment.receiver == Global.current_application_address
+    // ), err.WRONG_RECEIVER
+    assert // Wrong Receiver
+    // smart_contracts/delegation_registry/contract.py:498
+    // assert payment.amount == mbr_fee + Global.min_balance, err.WRONG_PAYMENT_AMOUNT
+    uncover 2
+    gtxns Amount
+    global MinBalance
+    uncover 2
+    +
+    ==
+    assert // Wrong payment amount
+    // smart_contracts/delegation_registry/contract.py:407-410
+    // # ---------------------------------
+    // # ----------    Voter    ----------
+    // # ---------------------------------
+    // @arc4.abimethod()
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.add_votes[routing]() -> void:
+add_votes:
+    // smart_contracts/delegation_registry/contract.py:502
+    // @arc4.abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    cover 2
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:524
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:525
+    // assert xgov_address in self.voters_box, err.NOT_VOTER
+    bytec_3 // 0x76
+    dig 1
+    concat
+    dup
+    cover 2
+    box_len
+    bury 1
+    assert // Not Voter
+    // smart_contracts/delegation_registry/contract.py:527
+    // if xgov_address == arc4.Address(Txn.sender):
+    txn Sender
+    ==
+    bz add_votes_else_body@3
+    // smart_contracts/delegation_registry/contract.py:528
+    // vote_fee = self.vote_fees.value.xgov.as_uint64()
+    intc_0 // 0
+    bytec 9 // 0x766f74655f66656573
+    app_global_get_ex
+    assert // check self.vote_fees exists
+    intc_0 // 0
+    extract_uint64
+
+add_votes_after_if_else@4:
+    // smart_contracts/delegation_registry/contract.py:532-536
+    // arc4.abi_call(
+    //     voter_contract.Voter.add_votes,
+    //     add_votes,
+    //     app_id=self.voters_box[xgov_address],
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:535
+    // app_id=self.voters_box[xgov_address],
+    dig 1
+    box_get
+    assert // check self.voters_box entry exists
+    btoi
+    itxn_field ApplicationID
+    // smart_contracts/delegation_registry/contract.py:532-536
+    // arc4.abi_call(
+    //     voter_contract.Voter.add_votes,
+    //     add_votes,
+    //     app_id=self.voters_box[xgov_address],
+    // )
+    pushbytes 0x2923f3d1 // method "add_votes(uint64)void"
+    itxn_field ApplicationArgs
+    dig 2
+    dup
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:538
+    // self.votes_left.value += add_votes.as_uint64()
+    intc_0 // 0
+    bytec_1 // 0x766f7465735f6c656674
+    app_global_get_ex
+    assert // check self.votes_left exists
+    swap
+    btoi
+    swap
+    dig 1
+    +
+    bytec_1 // 0x766f7465735f6c656674
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:539
+    // self.update_trigger_fund()
+    callsub update_trigger_fund
+    // smart_contracts/delegation_registry/contract.py:541-542
+    // # Check payment
+    // fee = vote_fee * add_votes.as_uint64()
+    *
+    // smart_contracts/delegation_registry/contract.py:544
+    // payment.receiver == Global.current_application_address
+    dig 3
+    dup
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/delegation_registry/contract.py:543-545
+    // assert (
+    //     payment.receiver == Global.current_application_address
+    // ), err.WRONG_RECEIVER
+    assert // Wrong Receiver
+    // smart_contracts/delegation_registry/contract.py:546
+    // assert payment.amount == fee, err.WRONG_PAYMENT_AMOUNT
+    gtxns Amount
+    ==
+    assert // Wrong payment amount
+    // smart_contracts/delegation_registry/contract.py:502
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+add_votes_else_body@3:
+    // smart_contracts/delegation_registry/contract.py:530
+    // vote_fee = self.vote_fees.value.other.as_uint64()
+    intc_0 // 0
+    bytec 9 // 0x766f74655f66656573
+    app_global_get_ex
+    assert // check self.vote_fees exists
+    pushint 8 // 8
+    extract_uint64
+    b add_votes_after_if_else@4
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.trigger_vote[routing]() -> void:
+trigger_vote:
+    // smart_contracts/delegation_registry/contract.py:550
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // smart_contracts/delegation_registry/contract.py:568
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:569
+    // assert xgov_address in self.voters_box, err.NOT_VOTER
+    bytec_3 // 0x76
+    uncover 2
+    concat
+    dup
+    box_len
+    bury 1
+    assert // Not Voter
+    // smart_contracts/delegation_registry/contract.py:571-575
+    // arc4.abi_call(
+    //     voter_contract.Voter.vote_representative,
+    //     proposal_id,
+    //     app_id=self.voters_box[xgov_address],
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:574
+    // app_id=self.voters_box[xgov_address],
+    box_get
+    pop
+    btoi
+    itxn_field ApplicationID
+    // smart_contracts/delegation_registry/contract.py:571-575
+    // arc4.abi_call(
+    //     voter_contract.Voter.vote_representative,
+    //     proposal_id,
+    //     app_id=self.voters_box[xgov_address],
+    // )
+    pushbytes 0x757e29fc // method "vote_representative(uint64)void"
+    itxn_field ApplicationArgs
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:577
+    // self.votes_left.value -= 1
+    intc_0 // 0
+    bytec_1 // 0x766f7465735f6c656674
+    app_global_get_ex
+    assert // check self.votes_left exists
+    intc_1 // 1
+    -
+    bytec_1 // 0x766f7465735f6c656674
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:578
+    // self.update_trigger_fund()
+    callsub update_trigger_fund
+    // smart_contracts/delegation_registry/contract.py:580-584
+    // # Send trigger award to sender
+    // itxn.Payment(
+    //     receiver=Txn.sender,
+    //     amount=self.vote_trigger_award.value,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:582
+    // receiver=Txn.sender,
+    txn Sender
+    // smart_contracts/delegation_registry/contract.py:583
+    // amount=self.vote_trigger_award.value,
+    intc_0 // 0
+    bytec 6 // 0x766f74655f747269676765725f6177617264
+    app_global_get_ex
+    assert // check self.vote_trigger_award exists
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/delegation_registry/contract.py:580-581
+    // # Send trigger award to sender
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:580-584
+    // # Send trigger award to sender
+    // itxn.Payment(
+    //     receiver=Txn.sender,
+    //     amount=self.vote_trigger_award.value,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:550
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.unregister_voter[routing]() -> void:
+unregister_voter:
+    intc_0 // 0
+    // smart_contracts/delegation_registry/contract.py:588
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dupn 2
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:604
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    swap
+    cover 2
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:606
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:607
+    // assert xgov_address in self.voters_box, err.NOT_VOTER
+    bytec_3 // 0x76
+    dig 1
+    concat
+    dup
+    cover 2
+    dup
+    box_len
+    bury 1
+    assert // Not Voter
+    // smart_contracts/delegation_registry/contract.py:608
+    // xgov_app = self.voters_box[xgov_address]
+    box_get
+    pop
+    btoi
+    dup
+    cover 2
+    // smart_contracts/delegation_registry/contract.py:611
+    // xgov_app, voter_cfg.GS_KEY_MANAGER_ADDRESS
+    bytec_2 // 0x6d616e616765725f61646472657373
+    // smart_contracts/delegation_registry/contract.py:610-612
+    // manager_address_bytes, exists = op.AppGlobal.get_ex_bytes(
+    //     xgov_app, voter_cfg.GS_KEY_MANAGER_ADDRESS
+    // )
+    app_global_get_ex
+    pop
+    swap
+    // smart_contracts/delegation_registry/contract.py:615-620
+    // # Get xgov_address box
+    // [xgov_box, exists], txn = arc4.abi_call(
+    //     IXGovRegistry.get_xgov_box,
+    //     xgov_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:619
+    // app_id=self.xgov_registry_app.value,
+    intc_0 // 0
+    bytec 5 // 0x78676f765f72656769737472795f617070
+    app_global_get_ex
+    assert // check self.xgov_registry_app exists
+    itxn_field ApplicationID
+    // smart_contracts/delegation_registry/contract.py:615-620
+    // # Get xgov_address box
+    // [xgov_box, exists], txn = arc4.abi_call(
+    //     IXGovRegistry.get_xgov_box,
+    //     xgov_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    bytec 15 // method "get_xgov_box(address)((address,uint64,uint64,uint64),bool)"
+    itxn_field ApplicationArgs
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    itxn LastLog
+    dup
+    extract 4 0
+    dup
+    len
+    pushint 57 // 57
+    ==
+    assert // invalid number of bytes for arc4.tuple<smart_contracts.common.abi_types.XGovBoxValue,arc4.bool>
+    dig 1
+    extract 0 4
+    bytec 4 // 0x151f7c75
+    ==
+    assert // application log value is not the result of an ABI return
+    swap
+    extract 4 56
+    swap
+    pushint 448 // 448
+    getbit
+    // smart_contracts/delegation_registry/contract.py:621-623
+    // # If xGov has unsubscribed from the xGov program, anyone can unregister it from DelegationRegistry.
+    // # Otherwise, only xgov_address or manager_address can unregister it.
+    // if exists:
+    bz unregister_voter_after_if_else@12
+    // smart_contracts/delegation_registry/contract.py:625
+    // Txn.sender == xgov_address or Txn.sender == manager_address
+    dig 5
+    txn Sender
+    ==
+    bnz unregister_voter_bool_true@5
+    dig 1
+    txn Sender
+    ==
+    bz unregister_voter_bool_false@6
+
+unregister_voter_bool_true@5:
+    intc_1 // 1
+
+unregister_voter_bool_merge@7:
+    // smart_contracts/delegation_registry/contract.py:624-626
+    // assert (
+    //     Txn.sender == xgov_address or Txn.sender == manager_address
+    // ), err.UNAUTHORIZED
+    assert // Unauthorized
+    // smart_contracts/delegation_registry/contract.py:631
+    // xgov_box.voting_address == manager_address
+    dup
+    extract 0 32
+    dup
+    bury 8
+    dig 2
+    ==
+    // smart_contracts/delegation_registry/contract.py:631-632
+    // xgov_box.voting_address == manager_address
+    // or xgov_box.voting_address == xgov_address
+    bnz unregister_voter_after_if_else@12
+    // smart_contracts/delegation_registry/contract.py:632
+    // or xgov_box.voting_address == xgov_address
+    dig 6
+    dig 6
+    ==
+    // smart_contracts/delegation_registry/contract.py:631-632
+    // xgov_box.voting_address == manager_address
+    // or xgov_box.voting_address == xgov_address
+    bnz unregister_voter_after_if_else@12
+    // smart_contracts/delegation_registry/contract.py:634-639
+    // arc4.abi_call(
+    //     IXGovRegistry.set_voting_account,
+    //     xgov_address,
+    //     manager_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:638
+    // app_id=self.xgov_registry_app.value,
+    intc_0 // 0
+    bytec 5 // 0x78676f765f72656769737472795f617070
+    app_global_get_ex
+    assert // check self.xgov_registry_app exists
+    itxn_field ApplicationID
+    // smart_contracts/delegation_registry/contract.py:634-639
+    // arc4.abi_call(
+    //     IXGovRegistry.set_voting_account,
+    //     xgov_address,
+    //     manager_address,
+    //     app_id=self.xgov_registry_app.value,
+    // )
+    pushbytes 0x0da27885 // method "set_voting_account(address,address)void"
+    itxn_field ApplicationArgs
+    dig 5
+    itxn_field ApplicationArgs
+    dig 1
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+
+unregister_voter_after_if_else@12:
+    // smart_contracts/delegation_registry/contract.py:641-644
+    // # Reduce paid votes
+    // votes_left, exists = op.AppGlobal.get_ex_uint64(
+    //     xgov_app, voter_cfg.GS_KEY_VOTES_LEFT
+    // )
+    dig 2
+    dup
+    // smart_contracts/delegation_registry/contract.py:643
+    // xgov_app, voter_cfg.GS_KEY_VOTES_LEFT
+    bytec_1 // 0x766f7465735f6c656674
+    // smart_contracts/delegation_registry/contract.py:641-644
+    // # Reduce paid votes
+    // votes_left, exists = op.AppGlobal.get_ex_uint64(
+    //     xgov_app, voter_cfg.GS_KEY_VOTES_LEFT
+    // )
+    app_global_get_ex
+    pop
+    // smart_contracts/delegation_registry/contract.py:645
+    // self.votes_left.value -= votes_left
+    intc_0 // 0
+    bytec_1 // 0x766f7465735f6c656674
+    app_global_get_ex
+    assert // check self.votes_left exists
+    swap
+    -
+    bytec_1 // 0x766f7465735f6c656674
+    swap
+    app_global_put
+    // smart_contracts/delegation_registry/contract.py:646
+    // self.update_trigger_fund()
+    callsub update_trigger_fund
+    // smart_contracts/delegation_registry/contract.py:648-651
+    // arc4.abi_call(
+    //     voter_contract.Voter.delete,
+    //     app_id=xgov_app,
+    // )
+    itxn_begin
+    pushint 5 // DeleteApplication
+    itxn_field OnCompletion
+    itxn_field ApplicationID
+    bytec 16 // method "delete()void"
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:653-654
+    // # Delete Voter box
+    // del self.voters_box[xgov_address]
+    dig 3
+    box_del
+    pop
+    // smart_contracts/delegation_registry/contract.py:656
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:657
+    // mbr_fee = mbr_before - mbr_after
+    dig 5
+    swap
+    -
+    // smart_contracts/delegation_registry/contract.py:659-662
+    // itxn.Payment(
+    //     receiver=xgov_address.native,
+    //     amount=mbr_fee,
+    // ).submit()
+    itxn_begin
+    itxn_field Amount
+    dig 5
+    itxn_field Receiver
+    // smart_contracts/delegation_registry/contract.py:659
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:659-662
+    // itxn.Payment(
+    //     receiver=xgov_address.native,
+    //     amount=mbr_fee,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:588
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+unregister_voter_bool_false@6:
+    intc_0 // 0
+    b unregister_voter_bool_merge@7
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.register_representative[routing]() -> void:
+register_representative:
+    // smart_contracts/delegation_registry/contract.py:666-669
+    // # ---------------------------------
+    // # -------- Representative ---------
+    // # ---------------------------------
+    // @arc4.abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    // smart_contracts/delegation_registry/contract.py:689
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:691
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:693
+    // representative_address = arc4.Address(Txn.sender)
+    txn Sender
+    // smart_contracts/delegation_registry/contract.py:695
+    // representative_address not in self.representatives_box
+    bytec 7 // 0x72
+    dig 1
+    concat
+    dup
+    box_len
+    bury 1
+    !
+    // smart_contracts/delegation_registry/contract.py:694-696
+    // assert (
+    //     representative_address not in self.representatives_box
+    // ), err.ALREADY_REPRESENTATIVE
+    assert // Already a representative
+    // smart_contracts/delegation_registry/contract.py:698
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_REPRESENTATIVE_BOX))
+    bytec 12 // 0x73635f726570
+    // smart_contracts/delegation_registry/contract.py:699-700
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    box_len
+    assert // check Box exists
+    // smart_contracts/delegation_registry/contract.py:698
+    // box = Box(Bytes, key=Bytes(cfg.CONTRACT_REPRESENTATIVE_BOX))
+    bytec 12 // 0x73635f726570
+    // smart_contracts/delegation_registry/contract.py:699-700
+    // # Assume program size is < const.MAX_STACK
+    // approval_program = box.extract(0, box.length)
+    intc_0 // 0
+    uncover 2
+    box_extract
+    // smart_contracts/delegation_registry/contract.py:702-712
+    // txn = arc4.abi_call(
+    //     representative_contract.Representative.create,
+    //     representative_address,
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    //     global_num_uint=representative_cfg.GLOBAL_UINTS,
+    //     global_num_bytes=representative_cfg.GLOBAL_BYTES,
+    //     local_num_uint=representative_cfg.LOCAL_UINTS,
+    //     local_num_bytes=representative_cfg.LOCAL_BYTES,
+    //     extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:711
+    // extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    pushint 3 // 3
+    itxn_field ExtraProgramPages
+    // smart_contracts/delegation_registry/contract.py:710
+    // local_num_bytes=representative_cfg.LOCAL_BYTES,
+    pushint 9 // 9
+    itxn_field LocalNumByteSlice
+    // smart_contracts/delegation_registry/contract.py:709
+    // local_num_uint=representative_cfg.LOCAL_UINTS,
+    pushint 7 // 7
+    itxn_field LocalNumUint
+    // smart_contracts/delegation_registry/contract.py:708
+    // global_num_bytes=representative_cfg.GLOBAL_BYTES,
+    intc_2 // 32
+    itxn_field GlobalNumByteSlice
+    // smart_contracts/delegation_registry/contract.py:707
+    // global_num_uint=representative_cfg.GLOBAL_UINTS,
+    intc_2 // 32
+    itxn_field GlobalNumUint
+    // smart_contracts/delegation_registry/contract.py:706
+    // clear_state_program=const.MIN_PROGRAM,
+    bytec 11 // 0x0a810143
+    itxn_field ClearStateProgramPages
+    itxn_field ApprovalProgramPages
+    // smart_contracts/delegation_registry/contract.py:702-712
+    // txn = arc4.abi_call(
+    //     representative_contract.Representative.create,
+    //     representative_address,
+    //     approval_program=approval_program,
+    //     clear_state_program=const.MIN_PROGRAM,
+    //     global_num_uint=representative_cfg.GLOBAL_UINTS,
+    //     global_num_bytes=representative_cfg.GLOBAL_BYTES,
+    //     local_num_uint=representative_cfg.LOCAL_UINTS,
+    //     local_num_bytes=representative_cfg.LOCAL_BYTES,
+    //     extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+    // )
+    pushbytes 0xcc694eaa // method "create(address)void"
+    itxn_field ApplicationArgs
+    swap
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    itxn CreatedApplicationID
+    // smart_contracts/delegation_registry/contract.py:714-718
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    //     receiver=txn.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:716
+    // receiver=txn.created_app.address,
+    dup
+    app_params_get AppAddress
+    assert // application exists
+    // smart_contracts/delegation_registry/contract.py:717
+    // amount=Global.min_balance,
+    global MinBalance
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/delegation_registry/contract.py:714-715
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:714-718
+    // # Fund the created app with MBR
+    // itxn.Payment(
+    //     receiver=txn.created_app.address,
+    //     amount=Global.min_balance,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:722
+    // self.representatives_box[representative_address] = Application(
+    itob
+    // smart_contracts/delegation_registry/contract.py:722-724
+    // self.representatives_box[representative_address] = Application(
+    //     representative_id
+    // )
+    swap
+    dig 1
+    box_put
+    // smart_contracts/delegation_registry/contract.py:726
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:727
+    // mbr_fee = mbr_after - mbr_before
+    uncover 2
+    -
+    // smart_contracts/delegation_registry/contract.py:731
+    // payment.receiver == Global.current_application_address
+    dig 2
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/delegation_registry/contract.py:729-732
+    // # Check payment
+    // assert (
+    //     payment.receiver == Global.current_application_address
+    // ), err.WRONG_RECEIVER
+    assert // Wrong Receiver
+    // smart_contracts/delegation_registry/contract.py:733
+    // assert payment.amount == (
+    uncover 2
+    gtxns Amount
+    // smart_contracts/delegation_registry/contract.py:734
+    // mbr_fee + self.representative_fee.value + Global.min_balance
+    intc_0 // 0
+    bytec 13 // 0x726570726573656e7461746976655f666565
+    app_global_get_ex
+    assert // check self.representative_fee exists
+    uncover 2
+    +
+    global MinBalance
+    +
+    // smart_contracts/delegation_registry/contract.py:733-734
+    // assert payment.amount == (
+    //     mbr_fee + self.representative_fee.value + Global.min_balance
+    ==
+    // smart_contracts/delegation_registry/contract.py:733-735
+    // assert payment.amount == (
+    //     mbr_fee + self.representative_fee.value + Global.min_balance
+    // ), err.WRONG_PAYMENT_AMOUNT
+    assert // Wrong payment amount
+    // smart_contracts/delegation_registry/contract.py:666-669
+    // # ---------------------------------
+    // # -------- Representative ---------
+    // # ---------------------------------
+    // @arc4.abimethod()
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.unregister_representative[routing]() -> void:
+unregister_representative:
+    // smart_contracts/delegation_registry/contract.py:750
+    // mbr_before = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:752
+    // assert not self.paused_registry.value, err.PAUSED_REGISTRY
+    intc_0 // 0
+    bytec_0 // 0x7061757365645f7265676973747279
+    app_global_get_ex
+    assert // check self.paused_registry exists
+    !
+    assert // Registry's non-admin methods are paused
+    // smart_contracts/delegation_registry/contract.py:754
+    // representative = arc4.Address(Txn.sender)
+    txn Sender
+    // smart_contracts/delegation_registry/contract.py:755
+    // assert representative in self.representatives_box, err.NOT_REPRESENTATIVE
+    bytec 7 // 0x72
+    dig 1
+    concat
+    dup
+    box_len
+    bury 1
+    assert // Not a representative
+    // smart_contracts/delegation_registry/contract.py:757-760
+    // arc4.abi_call(
+    //     representative_contract.Representative.delete,
+    //     app_id=self.representatives_box[representative],
+    // )
+    itxn_begin
+    // smart_contracts/delegation_registry/contract.py:759
+    // app_id=self.representatives_box[representative],
+    dup
+    box_get
+    pop
+    btoi
+    // smart_contracts/delegation_registry/contract.py:757-760
+    // arc4.abi_call(
+    //     representative_contract.Representative.delete,
+    //     app_id=self.representatives_box[representative],
+    // )
+    pushint 5 // DeleteApplication
+    itxn_field OnCompletion
+    itxn_field ApplicationID
+    bytec 16 // method "delete()void"
+    itxn_field ApplicationArgs
+    intc_3 // appl
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:762-763
+    // # Delete representative box
+    // del self.representatives_box[representative]
+    box_del
+    pop
+    // smart_contracts/delegation_registry/contract.py:765
+    // mbr_after = Global.current_application_address.min_balance
+    global CurrentApplicationAddress
+    acct_params_get AcctMinBalance
+    assert // account funded
+    // smart_contracts/delegation_registry/contract.py:766
+    // mbr_fee = mbr_before - mbr_after
+    uncover 2
+    swap
+    -
+    // smart_contracts/delegation_registry/contract.py:768-771
+    // itxn.Payment(
+    //     receiver=representative.native,
+    //     amount=mbr_fee,
+    // ).submit()
+    itxn_begin
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/delegation_registry/contract.py:768
+    // itxn.Payment(
+    intc_1 // pay
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/delegation_registry/contract.py:768-771
+    // itxn.Payment(
+    //     receiver=representative.native,
+    //     amount=mbr_fee,
+    // ).submit()
+    itxn_submit
+    // smart_contracts/delegation_registry/contract.py:739
+    // @arc4.abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.get_voter_app_id[routing]() -> void:
+get_voter_app_id:
+    // smart_contracts/delegation_registry/contract.py:775-778
+    // # ---------------------------------
+    // # -------- Getter methods ---------
+    // # ---------------------------------
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:793
+    // exists = xgov_address in self.voters_box
+    bytec_3 // 0x76
+    swap
+    concat
+    dup
+    box_len
+    dup
+    uncover 2
+    pop
+    // smart_contracts/delegation_registry/contract.py:794
+    // if exists:
+    bz get_voter_app_id_else_body@3
+    // smart_contracts/delegation_registry/contract.py:795
+    // val = self.voters_box[xgov_address].id
+    dig 1
+    box_get
+    assert // check self.voters_box entry exists
+    btoi
+
+get_voter_app_id_after_if_else@4:
+    // smart_contracts/delegation_registry/contract.py:775-778
+    // # ---------------------------------
+    // # -------- Getter methods ---------
+    // # ---------------------------------
+    // @arc4.abimethod(readonly=True)
+    itob
+    pushbytes 0x00
+    intc_0 // 0
+    dig 3
+    setbit
+    concat
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+get_voter_app_id_else_body@3:
+    // smart_contracts/delegation_registry/contract.py:797
+    // val = UInt64(0)
+    intc_0 // 0
+    b get_voter_app_id_after_if_else@4
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.get_representative_app_id[routing]() -> void:
+get_representative_app_id:
+    // smart_contracts/delegation_registry/contract.py:801
+    // @arc4.abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/delegation_registry/contract.py:816
+    // exists = representative_address in self.representatives_box
+    bytec 7 // 0x72
+    swap
+    concat
+    dup
+    box_len
+    dup
+    uncover 2
+    pop
+    // smart_contracts/delegation_registry/contract.py:817
+    // if exists:
+    bz get_representative_app_id_else_body@3
+    // smart_contracts/delegation_registry/contract.py:818
+    // val = self.representatives_box[representative_address].id
+    dig 1
+    box_get
+    assert // check self.representatives_box entry exists
+    btoi
+
+get_representative_app_id_after_if_else@4:
+    // smart_contracts/delegation_registry/contract.py:801
+    // @arc4.abimethod(readonly=True)
+    itob
+    pushbytes 0x00
+    intc_0 // 0
+    dig 3
+    setbit
+    concat
+    bytec 4 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+get_representative_app_id_else_body@3:
+    // smart_contracts/delegation_registry/contract.py:820
+    // val = UInt64(0)
+    intc_0 // 0
+    b get_representative_app_id_after_if_else@4
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.is_manager() -> uint64:
+is_manager:
+    // smart_contracts/delegation_registry/contract.py:837
+    // return Txn.sender == self.manager_address.value.native
+    txn Sender
+    intc_0 // 0
+    bytec_2 // 0x6d616e616765725f61646472657373
+    app_global_get_ex
+    assert // check self.manager_address exists
+    ==
+    retsub
+
+
+// smart_contracts.delegation_registry.contract.DelegationRegistry.update_trigger_fund() -> void:
+update_trigger_fund:
+    // smart_contracts/delegation_registry/contract.py:841
+    // self.trigger_fund.value = self.vote_trigger_award.value * self.votes_left.value
+    intc_0 // 0
+    bytec 6 // 0x766f74655f747269676765725f6177617264
+    app_global_get_ex
+    assert // check self.vote_trigger_award exists
+    intc_0 // 0
+    bytec_1 // 0x766f7465735f6c656674
+    app_global_get_ex
+    assert // check self.votes_left exists
+    *
+    bytec 8 // 0x747269676765725f66756e64
+    swap
+    app_global_put
+    retsub
