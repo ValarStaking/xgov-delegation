@@ -32,4 +32,6 @@ The Representative may explicitly boycott a proposal by casting a vote whose sum
 Anyone may trigger the casting of a delegated vote.
 The account that triggered the vote is rewarded for the action.
 
+Mainnet deployment: 3378436620
+
 Copyright (C) 2025 Valar Solutions GmbH
