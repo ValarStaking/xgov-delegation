@@ -4,7 +4,7 @@
     "../../proposal/utils.py",
     "../../representative/contract.py"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ACwCe;;AAA6B;AAA7B;AAAP;AACO;;AAAuB;AAAvB;AAAP;AACO;;AAA4B;;AAA5B;AAAP;AACO;;AAAsB;;AAAtB;AAAP;AAKQ;AADJ;;AADJ;AAMQ;AADJ;AADJ;AAOQ;AADJ;AADJ;AA3BR;;;;;;;;;;;;AAAA;;;AAAA;;;;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;AAAA;AAAA;;;;;;AAAA;;;AAAA;;;;AAAA;AAmMK;;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAlIA;;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AA1BA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAgBO;;AADJ;AAIA;AAAsC;;AAAtC;AACA;AAAA;AAAA;AAEA;AAAoB;AAApB;AAtBH;AAAA;AA4OU;;AAAc;;AAAd;AAzMP;AATH;AAAA;AAqBU;;;AAAP;AACA;AAAoB;AAApB;AATH;AAAA;AAqBU;;;AAAP;AACA;AAAoB;AAApB;AATH;AAAA;AAaA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAyBgB;;AAAA;;AAAA;AAEN;;;AAAP;AAgK+B;;AAAA;AAAZ;AAAA;;AAAA;AAPf;AAAA;AAAA;AAAA;AACA;;;;;;;;;;;;;;;;;;;AAFuB;AAAA;AAUH;;AAAA;AACjB;AAjKP;AAEW;AAAA;AAAA;AAAA;AAAJ;AAAP;AAGO;AAAoB;AAApB;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAP;AAGI;;AAAA;AAAA;AAA4B;;AAAA;AAAA;AAA5B;AAA0D;;;AAA1D;AADJ;AAIA;;AAAA;AAEY;;AAAA;;AAAA;AACF;AAAA;AAIN;;AAAA;;AAAoB;;AAApB;AADJ;AAGO;AAAA;;AAAA;AAAP;AAjDH;AAAA;AAqDA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAgBgB;;AAAA;;AAAA;AAEN;;;AAAP;AAGI;AAAA;ADpMS;AAEb;;;;;;;;AAFa;AAAA;AAKA;;AAAV;AC8LI;AAAP;AAK4B;AAAxB;AAAA;AAAA;AAAJ;;AAEY;;AAAA;;AAAA;AAGA;AACZ;AACa;;;;;;AADb;;;AAAA;;;AAAA;AA/BH;AAAA;AAsHU;;AAAc;;AAAd;AApEP;AAGI;;AAAA;;AAAA;AAAkD;;AAAlD;AADJ;AAIA;AACa;;AAEU;;;AADZ;;;;;AAFX;;;AAAA;;;AAAA;AAlBH;AAAA;AA6BA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAyBA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAemB;;;AAEL;;;AAAW;AAAA;AAAA;AAAA;AAAX;;;;AAjBd;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;;;AAzBA;;;AAe8B;;AAAA;AAElB;AAAgB;AAAhB;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AACjB;;;AACkB;;AAAA;AAAA;AAIV;;AAAA;;AAAA;;AAAA;AAFU;;;;;;;;;;;;;;;;;;;;;AAkCH;;AAAc;AAAA;AAAA;AAAA;AAAd;AAAP",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ACwCe;;AAA6B;AAA7B;AAAP;AACO;;AAAuB;AAAvB;AAAP;AACO;;AAA4B;;AAA5B;AAAP;AACO;;AAAsB;;AAAtB;AAAP;AAKQ;AADJ;;AADJ;AAMQ;AADJ;AADJ;AAOQ;AADJ;AADJ;AA3BR;;;;;;;;;;;;AAAA;;;AAAA;;;;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;AAAA;AAAA;;;;;;AAAA;;;AAAA;;;;AAAA;AAmMK;;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAlIA;;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AA1BA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAgBO;;AADJ;AAIA;AAAsC;;AAAtC;AACA;AAAA;AAAA;AAEA;AAAoB;AAApB;AAtBH;AAAA;AA4OU;;AAAc;;AAAd;AAzMP;AATH;AAAA;AAqBU;;;AAAP;AACA;AAAoB;AAApB;AATH;AAAA;AAqBU;;;AAAP;AACA;AAAoB;AAApB;AATH;AAAA;AAaA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AA0BgB;;AAAA;;AAAA;AAEN;;;AAAP;AA+J+B;;AAAA;AAAZ;AAAA;;AAAA;AAPf;AAAA;AAAA;AAAA;AACA;;;;;;;;;;;;;;;;;;;AAFuB;AAAA;AAUH;;AAAA;AACjB;AAhKP;AAEW;AAAA;AAAA;AAAA;AAAJ;AAAP;AAGO;AAAoB;AAApB;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAP;AAEO;;AAAA;AAAA;AAA6B;;AAA7B;AAAP;AACO;;AAAA;AAAA;AAA8B;;AAA9B;AAAP;AAEA;;AAAA;AAEY;;AAAA;;AAAA;AACF;AAAA;AAIN;;AAAA;;AAAoB;;AAApB;AADJ;AAGO;AAAA;;AAAA;AAAP;AAjDH;AAAA;AAqDA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAgBgB;;AAAA;;AAAA;AAAA;;AAAA;AAEN;;;AAAP;AAGI;AAAA;ADlMJ;;;;;;;;AAFa;AAKV;;;AAAW;AAAU;;AAAV;AAAX;;;;AC8LI;AAAP;AAK4B;;AAAA;AAAxB;AAAA;AAAA;AAAJ;;AAEY;;AAAA;;AAAA;AAGA;;AAAA;AAAA;AACZ;AACa;;;;;;AADb;;;AAAA;;;AAAA;AA/BH;AAAA;;;;;AAsHU;;AAAc;;AAAd;AApEP;AAGI;;AAAA;;AAAA;AAAkD;;AAAlD;AADJ;AAIA;AACa;;AAEU;;;AADZ;;;;;AAFX;;;AAAA;;;AAAA;AAlBH;AAAA;AA6BA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAyBA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAemB;;;AAEL;;;AAAW;AAAA;AAAA;AAAA;AAAX;;;;AAjBd;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;;;AAzBA;;;AAe8B;;AAAA;AAElB;AAAgB;AAAhB;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AACjB;;;AACkB;;AAAA;AAAA;AAIV;;AAAA;;AAAA;;AAAA;AAFU;;;;;;;;;;;;;;;;;;;;;AAkCH;;AAAc;AAAA;AAAA;AAAA;AAAd;AAAP",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -12,12 +12,12 @@
       "params": {},
       "block": "main",
       "stack_in": [],
-      "op": "intcblock 0 1 8 32"
+      "op": "intcblock 0 1 8 32 1000000"
     },
-    "7": {
+    "10": {
       "op": "bytecblock 0x706175736564 0x726570726573656e7461746976655f61646472657373 0x72656769737472795f617070 0x7076 0x151f7c75"
     },
-    "60": {
+    "63": {
       "op": "txn ApplicationID",
       "defined_out": [
         "tmp%0#0"
@@ -26,11 +26,11 @@
         "tmp%0#0"
       ]
     },
-    "62": {
+    "65": {
       "op": "bnz main_after_if_else@2",
       "stack_out": []
     },
-    "65": {
+    "68": {
       "op": "txn GlobalNumByteSlice",
       "defined_out": [
         "tmp%0#2"
@@ -39,7 +39,7 @@
         "tmp%0#2"
       ]
     },
-    "67": {
+    "70": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -50,7 +50,7 @@
         "32"
       ]
     },
-    "68": {
+    "71": {
       "op": "==",
       "defined_out": [
         "tmp%1#2"
@@ -59,12 +59,12 @@
         "tmp%1#2"
       ]
     },
-    "69": {
+    "72": {
       "error": "Wrong Global Bytes allocation",
       "op": "assert // Wrong Global Bytes allocation",
       "stack_out": []
     },
-    "70": {
+    "73": {
       "op": "txn GlobalNumUint",
       "defined_out": [
         "tmp%2#1"
@@ -73,14 +73,14 @@
         "tmp%2#1"
       ]
     },
-    "72": {
+    "75": {
       "op": "intc_3 // 32",
       "stack_out": [
         "tmp%2#1",
         "32"
       ]
     },
-    "73": {
+    "76": {
       "op": "==",
       "defined_out": [
         "tmp%3#1"
@@ -89,12 +89,12 @@
         "tmp%3#1"
       ]
     },
-    "74": {
+    "77": {
       "error": "Wrong Global UInts allocation",
       "op": "assert // Wrong Global UInts allocation",
       "stack_out": []
     },
-    "75": {
+    "78": {
       "op": "txn LocalNumByteSlice",
       "defined_out": [
         "tmp%4#1"
@@ -103,7 +103,7 @@
         "tmp%4#1"
       ]
     },
-    "77": {
+    "80": {
       "op": "pushint 9 // 9",
       "defined_out": [
         "9",
@@ -114,7 +114,7 @@
         "9"
       ]
     },
-    "79": {
+    "82": {
       "op": "==",
       "defined_out": [
         "tmp%5#0"
@@ -123,12 +123,12 @@
         "tmp%5#0"
       ]
     },
-    "80": {
+    "83": {
       "error": "Wrong Local Bytes allocation",
       "op": "assert // Wrong Local Bytes allocation",
       "stack_out": []
     },
-    "81": {
+    "84": {
       "op": "txn LocalNumUint",
       "defined_out": [
         "tmp%6#0"
@@ -137,7 +137,7 @@
         "tmp%6#0"
       ]
     },
-    "83": {
+    "86": {
       "op": "pushint 7 // 7",
       "defined_out": [
         "7",
@@ -148,7 +148,7 @@
         "7"
       ]
     },
-    "85": {
+    "88": {
       "op": "==",
       "defined_out": [
         "tmp%7#0"
@@ -157,12 +157,12 @@
         "tmp%7#0"
       ]
     },
-    "86": {
+    "89": {
       "error": "Wrong Local UInts allocation",
       "op": "assert // Wrong Local UInts allocation",
       "stack_out": []
     },
-    "87": {
+    "90": {
       "op": "bytec_1 // 0x726570726573656e7461746976655f61646472657373",
       "defined_out": [
         "0x726570726573656e7461746976655f61646472657373"
@@ -171,7 +171,7 @@
         "0x726570726573656e7461746976655f61646472657373"
       ]
     },
-    "88": {
+    "91": {
       "op": "global ZeroAddress",
       "defined_out": [
         "0x726570726573656e7461746976655f61646472657373",
@@ -182,11 +182,11 @@
         "tmp%8#1"
       ]
     },
-    "90": {
+    "93": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "91": {
+    "94": {
       "op": "bytec_2 // 0x72656769737472795f617070",
       "defined_out": [
         "0x72656769737472795f617070"
@@ -195,7 +195,7 @@
         "0x72656769737472795f617070"
       ]
     },
-    "92": {
+    "95": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -206,11 +206,11 @@
         "0"
       ]
     },
-    "93": {
+    "96": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "94": {
+    "97": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0x706175736564"
@@ -219,18 +219,18 @@
         "0x706175736564"
       ]
     },
-    "95": {
+    "98": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0x706175736564",
         "0"
       ]
     },
-    "96": {
+    "99": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "97": {
+    "100": {
       "block": "main_after_if_else@2",
       "stack_in": [],
       "op": "pushbytess 0xa0e81872 0x24378d3c // method \"update()void\", method \"delete()void\"",
@@ -243,7 +243,7 @@
         "Method(delete()void)"
       ]
     },
-    "109": {
+    "112": {
       "op": "txna ApplicationArgs 0",
       "defined_out": [
         "Method(delete()void)",
@@ -256,11 +256,11 @@
         "tmp%0#1"
       ]
     },
-    "112": {
+    "115": {
       "op": "match main_update_route@4 main_delete_route@5",
       "stack_out": []
     },
-    "118": {
+    "121": {
       "block": "main_switch_case_next@6",
       "stack_in": [],
       "op": "txn OnCompletion",
@@ -271,7 +271,7 @@
         "tmp%11#0"
       ]
     },
-    "120": {
+    "123": {
       "op": "!",
       "defined_out": [
         "tmp%12#0"
@@ -280,12 +280,12 @@
         "tmp%12#0"
       ]
     },
-    "121": {
+    "124": {
       "error": "OnCompletion must be NoOp",
       "op": "assert // OnCompletion must be NoOp",
       "stack_out": []
     },
-    "122": {
+    "125": {
       "op": "txn ApplicationID",
       "defined_out": [
         "tmp%13#0"
@@ -294,11 +294,11 @@
         "tmp%13#0"
       ]
     },
-    "124": {
+    "127": {
       "op": "bz main_create_NoOp@15",
       "stack_out": []
     },
-    "127": {
+    "130": {
       "op": "pushbytess 0x0178f94b 0x242d58ab 0x3c362694 0xbb1c7ea5 0x63e6ccd6 0x6ea81eb1 // method \"pause()void\", method \"resume()void\", method \"publish_vote(pay,uint64,(uint64,uint64))void\", method \"delete_vote(uint64)void\", method \"get_vote_box(uint64)((uint64,uint64),bool)\", method \"get_vote(uint64)((uint64,uint64),bool)\"",
       "defined_out": [
         "Method(delete_vote(uint64)void)",
@@ -317,7 +317,7 @@
         "Method(get_vote(uint64)((uint64,uint64),bool))"
       ]
     },
-    "159": {
+    "162": {
       "op": "txna ApplicationArgs 0",
       "defined_out": [
         "Method(delete_vote(uint64)void)",
@@ -338,14 +338,14 @@
         "tmp%15#0"
       ]
     },
-    "162": {
+    "165": {
       "op": "match pause resume publish_vote delete_vote get_vote_box get_vote",
       "stack_out": []
     },
-    "176": {
+    "179": {
       "op": "err"
     },
-    "177": {
+    "180": {
       "block": "main_create_NoOp@15",
       "stack_in": [],
       "op": "pushbytes 0xcc694eaa // method \"create(address)void\"",
@@ -356,7 +356,7 @@
         "Method(create(address)void)"
       ]
     },
-    "183": {
+    "186": {
       "op": "txna ApplicationArgs 0",
       "defined_out": [
         "Method(create(address)void)",
@@ -367,14 +367,14 @@
         "tmp%16#0"
       ]
     },
-    "186": {
+    "189": {
       "op": "match create",
       "stack_out": []
     },
-    "190": {
+    "193": {
       "op": "err"
     },
-    "191": {
+    "194": {
       "block": "main_delete_route@5",
       "stack_in": [],
       "op": "txn OnCompletion",
@@ -385,7 +385,7 @@
         "tmp%6#0"
       ]
     },
-    "193": {
+    "196": {
       "op": "pushint 5 // DeleteApplication",
       "defined_out": [
         "DeleteApplication",
@@ -396,7 +396,7 @@
         "DeleteApplication"
       ]
     },
-    "195": {
+    "198": {
       "op": "==",
       "defined_out": [
         "tmp%7#0"
@@ -405,7 +405,7 @@
         "tmp%7#0"
       ]
     },
-    "196": {
+    "199": {
       "op": "txn ApplicationID",
       "defined_out": [
         "tmp%7#0",
@@ -416,7 +416,7 @@
         "tmp%8#0"
       ]
     },
-    "198": {
+    "201": {
       "op": "&&",
       "defined_out": [
         "tmp%10#0"
@@ -425,15 +425,15 @@
         "tmp%10#0"
       ]
     },
-    "199": {
+    "202": {
       "error": "OnCompletion must be DeleteApplication && can only call when not creating",
       "op": "assert // OnCompletion must be DeleteApplication && can only call when not creating",
       "stack_out": []
     },
-    "200": {
+    "203": {
       "op": "b delete"
     },
-    "203": {
+    "206": {
       "block": "main_update_route@4",
       "stack_in": [],
       "op": "txn OnCompletion",
@@ -444,7 +444,7 @@
         "tmp%1#1"
       ]
     },
-    "205": {
+    "208": {
       "op": "pushint 4 // UpdateApplication",
       "defined_out": [
         "UpdateApplication",
@@ -455,7 +455,7 @@
         "UpdateApplication"
       ]
     },
-    "207": {
+    "210": {
       "op": "==",
       "defined_out": [
         "tmp%2#0"
@@ -464,7 +464,7 @@
         "tmp%2#0"
       ]
     },
-    "208": {
+    "211": {
       "op": "txn ApplicationID",
       "defined_out": [
         "tmp%2#0",
@@ -475,7 +475,7 @@
         "tmp%3#0"
       ]
     },
-    "210": {
+    "213": {
       "op": "&&",
       "defined_out": [
         "tmp%5#0"
@@ -484,15 +484,15 @@
         "tmp%5#0"
       ]
     },
-    "211": {
+    "214": {
       "error": "OnCompletion must be UpdateApplication && can only call when not creating",
       "op": "assert // OnCompletion must be UpdateApplication && can only call when not creating",
       "stack_out": []
     },
-    "212": {
+    "215": {
       "op": "b update"
     },
-    "215": {
+    "218": {
       "subroutine": "smart_contracts.representative.contract.Representative.create[routing]",
       "params": {},
       "block": "create",
@@ -505,7 +505,7 @@
         "representative_address#0"
       ]
     },
-    "218": {
+    "221": {
       "op": "dup",
       "defined_out": [
         "representative_address#0",
@@ -516,7 +516,7 @@
         "representative_address#0 (copy)"
       ]
     },
-    "219": {
+    "222": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -527,7 +527,7 @@
         "len%0#0"
       ]
     },
-    "220": {
+    "223": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -540,7 +540,7 @@
         "32"
       ]
     },
-    "221": {
+    "224": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -551,14 +551,14 @@
         "eq%0#0"
       ]
     },
-    "222": {
+    "225": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
         "representative_address#0"
       ]
     },
-    "223": {
+    "226": {
       "op": "global CallerApplicationID",
       "defined_out": [
         "representative_address#0",
@@ -569,14 +569,14 @@
         "tmp%0#1"
       ]
     },
-    "225": {
+    "228": {
       "error": "Unauthorized",
       "op": "assert // Unauthorized",
       "stack_out": [
         "representative_address#0"
       ]
     },
-    "226": {
+    "229": {
       "op": "bytec_2 // 0x72656769737472795f617070",
       "defined_out": [
         "0x72656769737472795f617070",
@@ -587,7 +587,7 @@
         "0x72656769737472795f617070"
       ]
     },
-    "227": {
+    "230": {
       "op": "global CallerApplicationID",
       "defined_out": [
         "0x72656769737472795f617070",
@@ -600,13 +600,13 @@
         "tmp%2#0"
       ]
     },
-    "229": {
+    "232": {
       "op": "app_global_put",
       "stack_out": [
         "representative_address#0"
       ]
     },
-    "230": {
+    "233": {
       "op": "bytec_1 // 0x726570726573656e7461746976655f61646472657373",
       "defined_out": [
         "0x726570726573656e7461746976655f61646472657373",
@@ -617,18 +617,18 @@
         "0x726570726573656e7461746976655f61646472657373"
       ]
     },
-    "231": {
+    "234": {
       "op": "swap",
       "stack_out": [
         "0x726570726573656e7461746976655f61646472657373",
         "representative_address#0"
       ]
     },
-    "232": {
+    "235": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "233": {
+    "236": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0x706175736564"
@@ -637,7 +637,7 @@
         "0x706175736564"
       ]
     },
-    "234": {
+    "237": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -648,11 +648,11 @@
         "0"
       ]
     },
-    "235": {
+    "238": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "236": {
+    "239": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -661,11 +661,11 @@
         "1"
       ]
     },
-    "237": {
+    "240": {
       "op": "return",
       "stack_out": []
     },
-    "238": {
+    "241": {
       "subroutine": "smart_contracts.representative.contract.Representative.update[routing]",
       "params": {},
       "block": "update",
@@ -678,7 +678,7 @@
         "tmp%0#1"
       ]
     },
-    "240": {
+    "243": {
       "op": "global CreatorAddress",
       "defined_out": [
         "tmp%0#1",
@@ -689,7 +689,7 @@
         "tmp%1#0"
       ]
     },
-    "242": {
+    "245": {
       "op": "==",
       "defined_out": [
         "tmp%2#0"
@@ -698,12 +698,12 @@
         "tmp%2#0"
       ]
     },
-    "243": {
+    "246": {
       "error": "Sender is not app creator",
       "op": "assert // Sender is not app creator",
       "stack_out": []
     },
-    "244": {
+    "247": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -712,11 +712,11 @@
         "1"
       ]
     },
-    "245": {
+    "248": {
       "op": "return",
       "stack_out": []
     },
-    "246": {
+    "249": {
       "subroutine": "smart_contracts.representative.contract.Representative.pause[routing]",
       "params": {},
       "block": "pause",
@@ -730,12 +730,12 @@
         "tmp%0#0"
       ]
     },
-    "249": {
+    "252": {
       "error": "Unauthorized",
       "op": "assert // Unauthorized",
       "stack_out": []
     },
-    "250": {
+    "253": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0x706175736564"
@@ -744,7 +744,7 @@
         "0x706175736564"
       ]
     },
-    "251": {
+    "254": {
       "op": "intc_1 // 1",
       "defined_out": [
         "0x706175736564",
@@ -755,21 +755,21 @@
         "1"
       ]
     },
-    "252": {
+    "255": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "253": {
+    "256": {
       "op": "intc_1 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "254": {
+    "257": {
       "op": "return",
       "stack_out": []
     },
-    "255": {
+    "258": {
       "subroutine": "smart_contracts.representative.contract.Representative.resume[routing]",
       "params": {},
       "block": "resume",
@@ -783,12 +783,12 @@
         "tmp%0#0"
       ]
     },
-    "258": {
+    "261": {
       "error": "Unauthorized",
       "op": "assert // Unauthorized",
       "stack_out": []
     },
-    "259": {
+    "262": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0x706175736564"
@@ -797,7 +797,7 @@
         "0x706175736564"
       ]
     },
-    "260": {
+    "263": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -808,11 +808,11 @@
         "0"
       ]
     },
-    "261": {
+    "264": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "262": {
+    "265": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -821,11 +821,11 @@
         "1"
       ]
     },
-    "263": {
+    "266": {
       "op": "return",
       "stack_out": []
     },
-    "264": {
+    "267": {
       "subroutine": "smart_contracts.representative.contract.Representative.publish_vote[routing]",
       "params": {},
       "block": "publish_vote",
@@ -838,7 +838,7 @@
         "tmp%0#0"
       ]
     },
-    "266": {
+    "269": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -849,7 +849,7 @@
         "1"
       ]
     },
-    "267": {
+    "270": {
       "op": "-",
       "defined_out": [
         "payment#0"
@@ -858,7 +858,7 @@
         "payment#0"
       ]
     },
-    "268": {
+    "271": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -869,7 +869,7 @@
         "payment#0 (copy)"
       ]
     },
-    "269": {
+    "272": {
       "op": "gtxns TypeEnum",
       "defined_out": [
         "gtxn_type%0#0",
@@ -880,7 +880,7 @@
         "gtxn_type%0#0"
       ]
     },
-    "271": {
+    "274": {
       "op": "intc_1 // pay",
       "defined_out": [
         "gtxn_type%0#0",
@@ -893,7 +893,7 @@
         "pay"
       ]
     },
-    "272": {
+    "275": {
       "op": "==",
       "defined_out": [
         "gtxn_type_matches%0#0",
@@ -904,14 +904,14 @@
         "gtxn_type_matches%0#0"
       ]
     },
-    "273": {
+    "276": {
       "error": "transaction type is pay",
       "op": "assert // transaction type is pay",
       "stack_out": [
         "payment#0"
       ]
     },
-    "274": {
+    "277": {
       "op": "txna ApplicationArgs 1",
       "defined_out": [
         "payment#0",
@@ -922,7 +922,7 @@
         "proposal_id#0"
       ]
     },
-    "277": {
+    "280": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -935,7 +935,7 @@
         "proposal_id#0 (copy)"
       ]
     },
-    "278": {
+    "281": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -948,7 +948,7 @@
         "len%0#0"
       ]
     },
-    "279": {
+    "282": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -963,7 +963,7 @@
         "8"
       ]
     },
-    "280": {
+    "283": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -976,7 +976,7 @@
         "eq%0#0"
       ]
     },
-    "281": {
+    "284": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -984,7 +984,7 @@
         "proposal_id#0"
       ]
     },
-    "282": {
+    "285": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "payment#0",
@@ -997,7 +997,7 @@
         "vote#0"
       ]
     },
-    "285": {
+    "288": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -1012,7 +1012,7 @@
         "vote#0 (copy)"
       ]
     },
-    "286": {
+    "289": {
       "op": "len",
       "defined_out": [
         "len%1#0",
@@ -1027,7 +1027,7 @@
         "len%1#0"
       ]
     },
-    "287": {
+    "290": {
       "op": "pushint 16 // 16",
       "defined_out": [
         "16",
@@ -1044,7 +1044,7 @@
         "16"
       ]
     },
-    "289": {
+    "292": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -1059,7 +1059,7 @@
         "eq%1#0"
       ]
     },
-    "290": {
+    "293": {
       "error": "invalid number of bytes for smart_contracts.common.abi_types.Vote",
       "op": "assert // invalid number of bytes for smart_contracts.common.abi_types.Vote",
       "stack_out": [
@@ -1068,7 +1068,7 @@
         "vote#0"
       ]
     },
-    "291": {
+    "294": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "payment#0",
@@ -1083,7 +1083,7 @@
         "tmp%0#1"
       ]
     },
-    "293": {
+    "296": {
       "op": "acct_params_get AcctMinBalance",
       "defined_out": [
         "check%0#0",
@@ -1100,7 +1100,7 @@
         "check%0#0"
       ]
     },
-    "295": {
+    "298": {
       "error": "account funded",
       "op": "assert // account funded",
       "stack_out": [
@@ -1110,7 +1110,7 @@
         "mbr_before#0"
       ]
     },
-    "296": {
+    "299": {
       "callsub": "smart_contracts.representative.contract.Representative.is_representative",
       "op": "callsub is_representative",
       "defined_out": [
@@ -1128,7 +1128,7 @@
         "tmp%1#1"
       ]
     },
-    "299": {
+    "302": {
       "error": "Unauthorized",
       "op": "assert // Unauthorized",
       "stack_out": [
@@ -1138,7 +1138,7 @@
         "mbr_before#0"
       ]
     },
-    "300": {
+    "303": {
       "op": "uncover 2",
       "stack_out": [
         "payment#0",
@@ -1147,7 +1147,7 @@
         "proposal_id#0"
       ]
     },
-    "302": {
+    "305": {
       "op": "btoi",
       "defined_out": [
         "mbr_before#0",
@@ -1162,7 +1162,7 @@
         "proposal_app#0"
       ]
     },
-    "303": {
+    "306": {
       "op": "dup",
       "defined_out": [
         "mbr_before#0",
@@ -1179,7 +1179,7 @@
         "proposal_app#0 (copy)"
       ]
     },
-    "304": {
+    "307": {
       "op": "app_params_get AppCreator",
       "defined_out": [
         "check%0#0",
@@ -1198,7 +1198,7 @@
         "check%0#0"
       ]
     },
-    "306": {
+    "309": {
       "error": "application exists",
       "op": "assert // application exists",
       "stack_out": [
@@ -1209,7 +1209,7 @@
         "proposal_creator#0"
       ]
     },
-    "307": {
+    "310": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -1228,7 +1228,7 @@
         "0"
       ]
     },
-    "308": {
+    "311": {
       "op": "bytec_2 // 0x72656769737472795f617070",
       "defined_out": [
         "0",
@@ -1249,7 +1249,7 @@
         "0x72656769737472795f617070"
       ]
     },
-    "309": {
+    "312": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -1270,7 +1270,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "310": {
+    "313": {
       "error": "check self.registry_app exists",
       "op": "assert // check self.registry_app exists",
       "stack_out": [
@@ -1282,7 +1282,7 @@
         "maybe_value%0#0"
       ]
     },
-    "311": {
+    "314": {
       "op": "pushbytes 0x78676f765f72656769737472795f617070",
       "defined_out": [
         "0x78676f765f72656769737472795f617070",
@@ -1303,7 +1303,7 @@
         "0x78676f765f72656769737472795f617070"
       ]
     },
-    "330": {
+    "333": {
       "op": "app_global_get_ex",
       "defined_out": [
         "exists#0",
@@ -1324,7 +1324,7 @@
         "exists#0"
       ]
     },
-    "331": {
+    "334": {
       "op": "pop",
       "stack_out": [
         "payment#0",
@@ -1335,7 +1335,7 @@
         "xgov_registry_id#1"
       ]
     },
-    "332": {
+    "335": {
       "op": "app_params_get AppAddress",
       "defined_out": [
         "check%1#0",
@@ -1356,7 +1356,7 @@
         "check%1#0"
       ]
     },
-    "334": {
+    "337": {
       "error": "application exists",
       "op": "assert // application exists",
       "stack_out": [
@@ -1368,7 +1368,7 @@
         "xgov_registry_address#0"
       ]
     },
-    "335": {
+    "338": {
       "op": "==",
       "defined_out": [
         "mbr_before#0",
@@ -1385,7 +1385,7 @@
         "tmp%2#2"
       ]
     },
-    "336": {
+    "339": {
       "error": "Proposal is not part of xGov Registry",
       "op": "assert // Proposal is not part of xGov Registry",
       "stack_out": [
@@ -1395,7 +1395,7 @@
         "proposal_app#0"
       ]
     },
-    "337": {
+    "340": {
       "op": "intc_0 // 0",
       "stack_out": [
         "payment#0",
@@ -1405,7 +1405,7 @@
         "0"
       ]
     },
-    "338": {
+    "341": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0",
@@ -1424,7 +1424,7 @@
         "0x706175736564"
       ]
     },
-    "339": {
+    "342": {
       "op": "app_global_get_ex",
       "stack_out": [
         "payment#0",
@@ -1435,7 +1435,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "340": {
+    "343": {
       "error": "check self.paused exists",
       "op": "assert // check self.paused exists",
       "stack_out": [
@@ -1446,7 +1446,7 @@
         "maybe_value%0#0"
       ]
     },
-    "341": {
+    "344": {
       "op": "!",
       "defined_out": [
         "mbr_before#0",
@@ -1463,7 +1463,7 @@
         "tmp%3#0"
       ]
     },
-    "342": {
+    "345": {
       "error": "Contract is paused",
       "op": "assert // Contract is paused",
       "stack_out": [
@@ -1473,7 +1473,7 @@
         "proposal_app#0"
       ]
     },
-    "343": {
+    "346": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0",
@@ -1488,7 +1488,7 @@
         "encoded_value%0#0"
       ]
     },
-    "344": {
+    "347": {
       "op": "bytec_3 // 0x7076",
       "defined_out": [
         "0x7076",
@@ -1505,7 +1505,7 @@
         "0x7076"
       ]
     },
-    "345": {
+    "348": {
       "op": "swap",
       "stack_out": [
         "payment#0",
@@ -1515,7 +1515,7 @@
         "encoded_value%0#0"
       ]
     },
-    "346": {
+    "349": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -1530,7 +1530,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "347": {
+    "350": {
       "op": "dup",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -1547,7 +1547,7 @@
         "box_prefixed_key%0#0 (copy)"
       ]
     },
-    "348": {
+    "351": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -1566,7 +1566,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "349": {
+    "352": {
       "op": "bury 1",
       "stack_out": [
         "payment#0",
@@ -1576,7 +1576,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "351": {
+    "354": {
       "op": "!",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -1593,7 +1593,7 @@
         "tmp%5#0"
       ]
     },
-    "352": {
+    "355": {
       "error": "Representative vote was already published",
       "op": "assert // Representative vote was already published",
       "stack_out": [
@@ -1603,7 +1603,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "353": {
+    "356": {
       "op": "dig 2",
       "stack_out": [
         "payment#0",
@@ -1613,7 +1613,7 @@
         "vote#0 (copy)"
       ]
     },
-    "355": {
+    "358": {
       "op": "intc_0 // 0",
       "stack_out": [
         "payment#0",
@@ -1624,7 +1624,7 @@
         "0"
       ]
     },
-    "356": {
+    "359": {
       "op": "extract_uint64",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -1641,37 +1641,14 @@
         "tmp%6#0"
       ]
     },
-    "357": {
-      "op": "dig 3",
-      "stack_out": [
-        "payment#0",
-        "vote#0",
-        "mbr_before#0",
-        "box_prefixed_key%0#0",
-        "tmp%6#0",
-        "vote#0 (copy)"
-      ]
-    },
-    "359": {
-      "op": "intc_2 // 8",
-      "stack_out": [
-        "payment#0",
-        "vote#0",
-        "mbr_before#0",
-        "box_prefixed_key%0#0",
-        "tmp%6#0",
-        "vote#0 (copy)",
-        "8"
-      ]
-    },
     "360": {
-      "op": "extract_uint64",
+      "op": "intc 4 // 1000000",
       "defined_out": [
+        "1000000",
         "box_prefixed_key%0#0",
         "mbr_before#0",
         "payment#0",
         "tmp%6#0",
-        "tmp%7#0",
         "vote#0"
       ],
       "stack_out": [
@@ -1680,11 +1657,59 @@
         "mbr_before#0",
         "box_prefixed_key%0#0",
         "tmp%6#0",
+        "1000000"
+      ]
+    },
+    "362": {
+      "op": "<=",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "mbr_before#0",
+        "payment#0",
+        "tmp%7#0",
+        "vote#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "vote#0",
+        "mbr_before#0",
+        "box_prefixed_key%0#0",
         "tmp%7#0"
       ]
     },
-    "361": {
-      "op": "+",
+    "363": {
+      "error": "Vote not in PPM",
+      "op": "assert // Vote not in PPM",
+      "stack_out": [
+        "payment#0",
+        "vote#0",
+        "mbr_before#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "364": {
+      "op": "dig 2",
+      "stack_out": [
+        "payment#0",
+        "vote#0",
+        "mbr_before#0",
+        "box_prefixed_key%0#0",
+        "vote#0 (copy)"
+      ]
+    },
+    "366": {
+      "op": "intc_2 // 8",
+      "stack_out": [
+        "payment#0",
+        "vote#0",
+        "mbr_before#0",
+        "box_prefixed_key%0#0",
+        "vote#0 (copy)",
+        "8"
+      ]
+    },
+    "367": {
+      "op": "extract_uint64",
       "defined_out": [
         "box_prefixed_key%0#0",
         "mbr_before#0",
@@ -1700,26 +1725,18 @@
         "tmp%8#0"
       ]
     },
-    "362": {
-      "op": "pushint 10000 // 10000",
-      "defined_out": [
-        "10000",
-        "box_prefixed_key%0#0",
-        "mbr_before#0",
-        "payment#0",
-        "tmp%8#0",
-        "vote#0"
-      ],
+    "368": {
+      "op": "intc 4 // 1000000",
       "stack_out": [
         "payment#0",
         "vote#0",
         "mbr_before#0",
         "box_prefixed_key%0#0",
         "tmp%8#0",
-        "10000"
+        "1000000"
       ]
     },
-    "365": {
+    "370": {
       "op": "<=",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -1736,9 +1753,9 @@
         "tmp%9#0"
       ]
     },
-    "366": {
-      "error": "Vote not in BPS",
-      "op": "assert // Vote not in BPS",
+    "371": {
+      "error": "Vote not in PPM",
+      "op": "assert // Vote not in PPM",
       "stack_out": [
         "payment#0",
         "vote#0",
@@ -1746,7 +1763,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "367": {
+    "372": {
       "op": "uncover 2",
       "stack_out": [
         "payment#0",
@@ -1755,14 +1772,14 @@
         "vote#0"
       ]
     },
-    "369": {
+    "374": {
       "op": "box_put",
       "stack_out": [
         "payment#0",
         "mbr_before#0"
       ]
     },
-    "370": {
+    "375": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "mbr_before#0",
@@ -1775,7 +1792,7 @@
         "tmp%10#0"
       ]
     },
-    "372": {
+    "377": {
       "op": "acct_params_get AcctMinBalance",
       "defined_out": [
         "check%1#0",
@@ -1790,7 +1807,7 @@
         "check%1#0"
       ]
     },
-    "374": {
+    "379": {
       "error": "account funded",
       "op": "assert // account funded",
       "stack_out": [
@@ -1799,7 +1816,7 @@
         "mbr_after#0"
       ]
     },
-    "375": {
+    "380": {
       "op": "swap",
       "stack_out": [
         "payment#0",
@@ -1807,7 +1824,7 @@
         "mbr_before#0"
       ]
     },
-    "376": {
+    "381": {
       "op": "-",
       "defined_out": [
         "mbr_fee#0",
@@ -1818,7 +1835,7 @@
         "mbr_fee#0"
       ]
     },
-    "377": {
+    "382": {
       "op": "dig 1",
       "stack_out": [
         "payment#0",
@@ -1826,7 +1843,7 @@
         "payment#0 (copy)"
       ]
     },
-    "379": {
+    "384": {
       "op": "gtxns Receiver",
       "defined_out": [
         "mbr_fee#0",
@@ -1839,7 +1856,7 @@
         "tmp%12#0"
       ]
     },
-    "381": {
+    "386": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "mbr_fee#0",
@@ -1854,7 +1871,7 @@
         "tmp%13#0"
       ]
     },
-    "383": {
+    "388": {
       "op": "==",
       "defined_out": [
         "mbr_fee#0",
@@ -1867,7 +1884,7 @@
         "tmp%14#0"
       ]
     },
-    "384": {
+    "389": {
       "error": "Wrong Receiver",
       "op": "assert // Wrong Receiver",
       "stack_out": [
@@ -1875,14 +1892,14 @@
         "mbr_fee#0"
       ]
     },
-    "385": {
+    "390": {
       "op": "swap",
       "stack_out": [
         "mbr_fee#0",
         "payment#0"
       ]
     },
-    "386": {
+    "391": {
       "op": "gtxns Amount",
       "defined_out": [
         "mbr_fee#0",
@@ -1893,7 +1910,7 @@
         "tmp%15#0"
       ]
     },
-    "388": {
+    "393": {
       "op": "==",
       "defined_out": [
         "tmp%16#0"
@@ -1902,22 +1919,22 @@
         "tmp%16#0"
       ]
     },
-    "389": {
+    "394": {
       "error": "Wrong payment amount",
       "op": "assert // Wrong payment amount",
       "stack_out": []
     },
-    "390": {
+    "395": {
       "op": "intc_1 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "391": {
+    "396": {
       "op": "return",
       "stack_out": []
     },
-    "392": {
+    "397": {
       "subroutine": "smart_contracts.representative.contract.Representative.delete_vote[routing]",
       "params": {},
       "block": "delete_vote",
@@ -1930,7 +1947,7 @@
         "proposal_id#0"
       ]
     },
-    "395": {
+    "400": {
       "op": "dup",
       "defined_out": [
         "proposal_id#0",
@@ -1941,7 +1958,7 @@
         "proposal_id#0 (copy)"
       ]
     },
-    "396": {
+    "401": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -1952,7 +1969,7 @@
         "len%0#0"
       ]
     },
-    "397": {
+    "402": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -1965,7 +1982,7 @@
         "8"
       ]
     },
-    "398": {
+    "403": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -1976,14 +1993,14 @@
         "eq%0#0"
       ]
     },
-    "399": {
+    "404": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "proposal_id#0"
       ]
     },
-    "400": {
+    "405": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "proposal_id#0",
@@ -1994,7 +2011,7 @@
         "tmp%0#1"
       ]
     },
-    "402": {
+    "407": {
       "op": "acct_params_get AcctMinBalance",
       "defined_out": [
         "check%0#0",
@@ -2007,15 +2024,36 @@
         "check%0#0"
       ]
     },
-    "404": {
-      "error": "account funded",
-      "op": "assert // account funded",
+    "409": {
+      "op": "swap",
       "stack_out": [
         "proposal_id#0",
+        "check%0#0",
         "mbr_before#0"
       ]
     },
-    "405": {
+    "410": {
+      "op": "cover 2",
+      "defined_out": [
+        "check%0#0",
+        "mbr_before#0",
+        "proposal_id#0"
+      ],
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_id#0",
+        "check%0#0"
+      ]
+    },
+    "412": {
+      "error": "account funded",
+      "op": "assert // account funded",
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_id#0"
+      ]
+    },
+    "413": {
       "callsub": "smart_contracts.representative.contract.Representative.is_representative",
       "op": "callsub is_representative",
       "defined_out": [
@@ -2024,27 +2062,20 @@
         "tmp%1#0"
       ],
       "stack_out": [
-        "proposal_id#0",
         "mbr_before#0",
+        "proposal_id#0",
         "tmp%1#0"
       ]
     },
-    "408": {
+    "416": {
       "error": "Unauthorized",
       "op": "assert // Unauthorized",
-      "stack_out": [
-        "proposal_id#0",
-        "mbr_before#0"
-      ]
-    },
-    "409": {
-      "op": "swap",
       "stack_out": [
         "mbr_before#0",
         "proposal_id#0"
       ]
     },
-    "410": {
+    "417": {
       "op": "btoi",
       "defined_out": [
         "mbr_before#0",
@@ -2055,35 +2086,33 @@
         "proposal_app#0"
       ]
     },
-    "411": {
+    "418": {
       "op": "dup",
       "defined_out": [
         "mbr_before#0",
-        "proposal_app#0",
-        "proposal_app#0 (copy)"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
         "proposal_app#0",
-        "proposal_app#0 (copy)"
+        "proposal_app#0"
       ]
     },
-    "412": {
+    "419": {
       "op": "pushbytes 0x737461747573",
       "defined_out": [
         "0x737461747573",
         "mbr_before#0",
-        "proposal_app#0",
-        "proposal_app#0 (copy)"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
         "proposal_app#0",
-        "proposal_app#0 (copy)",
+        "proposal_app#0",
         "0x737461747573"
       ]
     },
-    "420": {
+    "427": {
       "op": "app_global_get_ex",
       "defined_out": [
         "exists#0",
@@ -2098,15 +2127,24 @@
         "exists#0"
       ]
     },
-    "421": {
-      "op": "pop",
+    "428": {
+      "op": "bz delete_vote_bool_false@4",
       "stack_out": [
         "mbr_before#0",
         "proposal_app#0",
         "status#0"
       ]
     },
-    "422": {
+    "431": {
+      "op": "dup",
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "status#0"
+      ]
+    },
+    "432": {
       "op": "pushint 25 // 25",
       "defined_out": [
         "25",
@@ -2118,208 +2156,358 @@
         "mbr_before#0",
         "proposal_app#0",
         "status#0",
+        "status#0",
         "25"
       ]
     },
-    "424": {
+    "434": {
       "op": "==",
       "defined_out": [
         "mbr_before#0",
         "proposal_app#0",
+        "status#0",
         "tmp%2#0"
       ],
       "stack_out": [
         "mbr_before#0",
         "proposal_app#0",
+        "status#0",
         "tmp%2#0"
       ]
     },
-    "425": {
+    "435": {
+      "op": "bz delete_vote_bool_false@4",
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ]
+    },
+    "438": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "and_result%0#0",
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ],
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "and_result%0#0"
+      ]
+    },
+    "439": {
+      "block": "delete_vote_bool_merge@5",
+      "stack_in": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "and_result%0#0"
+      ],
       "op": "!",
       "defined_out": [
-        "mbr_before#0",
-        "proposal_app#0",
         "tmp%4#0"
       ],
       "stack_out": [
         "mbr_before#0",
         "proposal_app#0",
+        "status#0",
         "tmp%4#0"
       ]
     },
-    "426": {
+    "440": {
       "error": "Proposal is in voting stage",
       "op": "assert // Proposal is in voting stage",
       "stack_out": [
         "mbr_before#0",
-        "proposal_app#0"
+        "proposal_app#0",
+        "status#0"
       ]
     },
-    "427": {
-      "op": "itob",
+    "441": {
+      "op": "dig 1",
       "defined_out": [
-        "encoded_value%0#0",
-        "mbr_before#0"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "proposal_app#0"
+      ]
+    },
+    "443": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0",
+        "proposal_app#0"
+      ],
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "encoded_value%0#0"
       ]
     },
-    "428": {
+    "444": {
       "op": "bytec_3 // 0x7076",
       "defined_out": [
         "0x7076",
         "encoded_value%0#0",
-        "mbr_before#0"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "encoded_value%0#0",
         "0x7076"
       ]
     },
-    "429": {
+    "445": {
       "op": "swap",
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "0x7076",
         "encoded_value%0#0"
       ]
     },
-    "430": {
+    "446": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0",
-        "mbr_before#0"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "box_prefixed_key%0#0"
       ]
     },
-    "431": {
+    "447": {
       "op": "box_del",
       "defined_out": [
-        "mbr_before#0",
+        "proposal_app#0",
         "{box_del}"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "{box_del}"
       ]
     },
-    "432": {
+    "448": {
       "op": "pop",
       "stack_out": [
-        "mbr_before#0"
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
       ]
     },
-    "433": {
+    "449": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
-        "mbr_before#0",
+        "proposal_app#0",
         "tmp%6#0"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "tmp%6#0"
       ]
     },
-    "435": {
+    "451": {
       "op": "acct_params_get AcctMinBalance",
       "defined_out": [
         "check%1#0",
         "mbr_after#0",
-        "mbr_before#0"
+        "proposal_app#0"
       ],
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "mbr_after#0",
         "check%1#0"
       ]
     },
-    "437": {
+    "453": {
       "error": "account funded",
       "op": "assert // account funded",
       "stack_out": [
         "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "mbr_after#0"
       ]
     },
-    "438": {
-      "op": "-",
+    "454": {
+      "op": "dig 3",
       "defined_out": [
-        "mbr_freed#0"
+        "mbr_after#0",
+        "mbr_before#0",
+        "proposal_app#0"
       ],
       "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "mbr_after#0",
+        "mbr_before#0"
+      ]
+    },
+    "456": {
+      "op": "swap",
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "mbr_before#0",
+        "mbr_after#0"
+      ]
+    },
+    "457": {
+      "op": "-",
+      "defined_out": [
+        "mbr_before#0",
+        "mbr_freed#0",
+        "proposal_app#0"
+      ],
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "mbr_freed#0"
       ]
     },
-    "439": {
+    "458": {
       "op": "itxn_begin"
     },
-    "440": {
+    "459": {
       "op": "global CreatorAddress",
       "defined_out": [
         "inner_txn_params%0%%param_Receiver_idx_0#0",
-        "mbr_freed#0"
+        "mbr_before#0",
+        "mbr_freed#0",
+        "proposal_app#0"
       ],
       "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "mbr_freed#0",
         "inner_txn_params%0%%param_Receiver_idx_0#0"
       ]
     },
-    "442": {
+    "461": {
       "op": "itxn_field Receiver"
     },
-    "444": {
+    "463": {
       "op": "itxn_field Amount",
-      "stack_out": []
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ]
     },
-    "446": {
+    "465": {
       "op": "intc_1 // pay",
       "defined_out": [
-        "pay"
+        "mbr_before#0",
+        "pay",
+        "proposal_app#0"
       ],
       "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "pay"
       ]
     },
-    "447": {
+    "466": {
       "op": "itxn_field TypeEnum",
-      "stack_out": []
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ]
     },
-    "449": {
+    "468": {
       "op": "intc_0 // 0",
       "defined_out": [
-        "0"
+        "0",
+        "mbr_before#0",
+        "proposal_app#0"
       ],
       "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "0"
       ]
     },
-    "450": {
+    "469": {
       "op": "itxn_field Fee",
-      "stack_out": []
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ]
     },
-    "452": {
+    "471": {
       "op": "itxn_submit"
     },
-    "453": {
+    "472": {
       "op": "intc_1 // 1",
       "defined_out": [
-        "1"
+        "1",
+        "mbr_before#0",
+        "proposal_app#0"
       ],
       "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
         "1"
       ]
     },
-    "454": {
+    "473": {
       "op": "return",
-      "stack_out": []
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ]
     },
-    "455": {
+    "474": {
+      "block": "delete_vote_bool_false@4",
+      "stack_in": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0"
+      ],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "and_result%0#0"
+      ],
+      "stack_out": [
+        "mbr_before#0",
+        "proposal_app#0",
+        "status#0",
+        "and_result%0#0"
+      ]
+    },
+    "475": {
+      "op": "b delete_vote_bool_merge@5"
+    },
+    "478": {
       "subroutine": "smart_contracts.representative.contract.Representative.delete[routing]",
       "params": {},
       "block": "delete",
@@ -2332,7 +2520,7 @@
         "tmp%0#1"
       ]
     },
-    "457": {
+    "480": {
       "op": "global CreatorAddress",
       "defined_out": [
         "tmp%0#1",
@@ -2343,7 +2531,7 @@
         "tmp%1#0"
       ]
     },
-    "459": {
+    "482": {
       "op": "==",
       "defined_out": [
         "tmp%2#1"
@@ -2352,18 +2540,18 @@
         "tmp%2#1"
       ]
     },
-    "460": {
+    "483": {
       "error": "Sender is not app creator",
       "op": "assert // Sender is not app creator",
       "stack_out": []
     },
-    "461": {
+    "484": {
       "op": "global CurrentApplicationAddress",
       "stack_out": [
         "tmp%1#0"
       ]
     },
-    "463": {
+    "486": {
       "op": "acct_params_get AcctMinBalance",
       "defined_out": [
         "check%0#0",
@@ -2374,14 +2562,14 @@
         "check%0#0"
       ]
     },
-    "465": {
+    "488": {
       "error": "account funded",
       "op": "assert // account funded",
       "stack_out": [
         "value%0#0"
       ]
     },
-    "466": {
+    "489": {
       "op": "global MinBalance",
       "defined_out": [
         "tmp%2#0",
@@ -2392,7 +2580,7 @@
         "tmp%2#0"
       ]
     },
-    "468": {
+    "491": {
       "op": "==",
       "defined_out": [
         "tmp%3#0"
@@ -2401,15 +2589,15 @@
         "tmp%3#0"
       ]
     },
-    "469": {
+    "492": {
       "error": "Not all boxes deleted",
       "op": "assert // Not all boxes deleted",
       "stack_out": []
     },
-    "470": {
+    "493": {
       "op": "itxn_begin"
     },
-    "471": {
+    "494": {
       "op": "global CreatorAddress",
       "defined_out": [
         "inner_txn_params%0%%param_Receiver_idx_0#0"
@@ -2418,7 +2606,7 @@
         "inner_txn_params%0%%param_Receiver_idx_0#0"
       ]
     },
-    "473": {
+    "496": {
       "op": "dup",
       "defined_out": [
         "inner_txn_params%0%%param_CloseRemainderTo_idx_0#0",
@@ -2429,13 +2617,13 @@
         "inner_txn_params%0%%param_CloseRemainderTo_idx_0#0"
       ]
     },
-    "474": {
+    "497": {
       "op": "itxn_field CloseRemainderTo",
       "stack_out": [
         "inner_txn_params%0%%param_Receiver_idx_0#0"
       ]
     },
-    "476": {
+    "499": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -2446,17 +2634,17 @@
         "0"
       ]
     },
-    "477": {
+    "500": {
       "op": "itxn_field Amount",
       "stack_out": [
         "inner_txn_params%0%%param_Receiver_idx_0#0"
       ]
     },
-    "479": {
+    "502": {
       "op": "itxn_field Receiver",
       "stack_out": []
     },
-    "481": {
+    "504": {
       "op": "intc_1 // pay",
       "defined_out": [
         "pay"
@@ -2465,24 +2653,24 @@
         "pay"
       ]
     },
-    "482": {
+    "505": {
       "op": "itxn_field TypeEnum",
       "stack_out": []
     },
-    "484": {
+    "507": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "485": {
+    "508": {
       "op": "itxn_field Fee",
       "stack_out": []
     },
-    "487": {
+    "510": {
       "op": "itxn_submit"
     },
-    "488": {
+    "511": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -2491,11 +2679,11 @@
         "1"
       ]
     },
-    "489": {
+    "512": {
       "op": "return",
       "stack_out": []
     },
-    "490": {
+    "513": {
       "subroutine": "smart_contracts.representative.contract.Representative.get_vote_box[routing]",
       "params": {},
       "block": "get_vote_box",
@@ -2508,7 +2696,7 @@
         "tmp%0#0"
       ]
     },
-    "493": {
+    "516": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -2519,7 +2707,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "494": {
+    "517": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -2530,7 +2718,7 @@
         "len%0#0"
       ]
     },
-    "495": {
+    "518": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -2543,7 +2731,7 @@
         "8"
       ]
     },
-    "496": {
+    "519": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -2554,14 +2742,14 @@
         "eq%0#0"
       ]
     },
-    "497": {
+    "520": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "498": {
+    "521": {
       "callsub": "smart_contracts.representative.contract.Representative.get_vote_box",
       "op": "callsub smart_contracts.representative.contract.Representative.get_vote_box",
       "defined_out": [
@@ -2573,7 +2761,7 @@
         "tmp%2#0"
       ]
     },
-    "501": {
+    "524": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -2586,7 +2774,7 @@
         "0x00"
       ]
     },
-    "504": {
+    "527": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -2601,7 +2789,7 @@
         "0"
       ]
     },
-    "505": {
+    "528": {
       "op": "uncover 2",
       "stack_out": [
         "tmp%1#0",
@@ -2610,7 +2798,7 @@
         "tmp%2#0"
       ]
     },
-    "507": {
+    "530": {
       "op": "setbit",
       "defined_out": [
         "aggregate%encoded_bool%0#0",
@@ -2621,7 +2809,7 @@
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "508": {
+    "531": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0"
@@ -2630,7 +2818,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "509": {
+    "532": {
       "op": "bytec 4 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -2641,14 +2829,14 @@
         "0x151f7c75"
       ]
     },
-    "511": {
+    "534": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%head%1#0"
       ]
     },
-    "512": {
+    "535": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0"
@@ -2657,11 +2845,11 @@
         "tmp%4#0"
       ]
     },
-    "513": {
+    "536": {
       "op": "log",
       "stack_out": []
     },
-    "514": {
+    "537": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -2670,11 +2858,11 @@
         "1"
       ]
     },
-    "515": {
+    "538": {
       "op": "return",
       "stack_out": []
     },
-    "516": {
+    "539": {
       "subroutine": "smart_contracts.representative.contract.Representative.get_vote[routing]",
       "params": {},
       "block": "get_vote",
@@ -2687,7 +2875,7 @@
         "proposal_id#0"
       ]
     },
-    "519": {
+    "542": {
       "op": "dup",
       "defined_out": [
         "proposal_id#0",
@@ -2698,7 +2886,7 @@
         "proposal_id#0 (copy)"
       ]
     },
-    "520": {
+    "543": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -2709,7 +2897,7 @@
         "len%0#0"
       ]
     },
-    "521": {
+    "544": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -2722,7 +2910,7 @@
         "8"
       ]
     },
-    "522": {
+    "545": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -2733,14 +2921,14 @@
         "eq%0#0"
       ]
     },
-    "523": {
+    "546": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "proposal_id#0"
       ]
     },
-    "524": {
+    "547": {
       "callsub": "smart_contracts.representative.contract.Representative.get_vote_box",
       "op": "callsub smart_contracts.representative.contract.Representative.get_vote_box",
       "defined_out": [
@@ -2752,20 +2940,20 @@
         "exists#0"
       ]
     },
-    "527": {
+    "550": {
       "op": "bz get_vote_bool_false@4",
       "stack_out": [
         "val#0"
       ]
     },
-    "530": {
+    "553": {
       "op": "intc_0 // 0",
       "stack_out": [
         "val#0",
         "0"
       ]
     },
-    "531": {
+    "554": {
       "op": "bytec_0 // 0x706175736564",
       "defined_out": [
         "0",
@@ -2778,7 +2966,7 @@
         "0x706175736564"
       ]
     },
-    "532": {
+    "555": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -2791,7 +2979,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "533": {
+    "556": {
       "error": "check self.paused exists",
       "op": "assert // check self.paused exists",
       "stack_out": [
@@ -2799,13 +2987,13 @@
         "maybe_value%0#0"
       ]
     },
-    "534": {
+    "557": {
       "op": "bnz get_vote_bool_false@4",
       "stack_out": [
         "val#0"
       ]
     },
-    "537": {
+    "560": {
       "op": "intc_1 // 1",
       "defined_out": [
         "is_valid#0",
@@ -2816,7 +3004,7 @@
         "is_valid#0"
       ]
     },
-    "538": {
+    "561": {
       "block": "get_vote_bool_merge@5",
       "stack_in": [
         "val#0",
@@ -2832,7 +3020,7 @@
         "0x00"
       ]
     },
-    "541": {
+    "564": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -2845,7 +3033,7 @@
         "0"
       ]
     },
-    "542": {
+    "565": {
       "op": "uncover 2",
       "defined_out": [
         "0",
@@ -2859,7 +3047,7 @@
         "is_valid#0"
       ]
     },
-    "544": {
+    "567": {
       "op": "setbit",
       "defined_out": [
         "aggregate%encoded_bool%0#0"
@@ -2869,7 +3057,7 @@
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "545": {
+    "568": {
       "op": "dig 1",
       "defined_out": [
         "aggregate%encoded_bool%0#0",
@@ -2881,7 +3069,7 @@
         "val#0"
       ]
     },
-    "547": {
+    "570": {
       "op": "swap",
       "stack_out": [
         "val#0",
@@ -2889,7 +3077,7 @@
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "548": {
+    "571": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -2900,7 +3088,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "549": {
+    "572": {
       "op": "bytec 4 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -2913,7 +3101,7 @@
         "0x151f7c75"
       ]
     },
-    "551": {
+    "574": {
       "op": "swap",
       "stack_out": [
         "val#0",
@@ -2921,7 +3109,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "552": {
+    "575": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0",
@@ -2932,13 +3120,13 @@
         "tmp%4#0"
       ]
     },
-    "553": {
+    "576": {
       "op": "log",
       "stack_out": [
         "val#0"
       ]
     },
-    "554": {
+    "577": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -2949,13 +3137,13 @@
         "1"
       ]
     },
-    "555": {
+    "578": {
       "op": "return",
       "stack_out": [
         "val#0"
       ]
     },
-    "556": {
+    "579": {
       "block": "get_vote_bool_false@4",
       "stack_in": [
         "val#0"
@@ -2969,10 +3157,10 @@
         "is_valid#0"
       ]
     },
-    "557": {
+    "580": {
       "op": "b get_vote_bool_merge@5"
     },
-    "560": {
+    "583": {
       "subroutine": "smart_contracts.representative.contract.Representative.get_vote_box",
       "params": {
         "proposal_id#0": "bytes"
@@ -2981,7 +3169,7 @@
       "stack_in": [],
       "op": "proto 1 2"
     },
-    "563": {
+    "586": {
       "op": "frame_dig -1",
       "defined_out": [
         "proposal_id#0 (copy)"
@@ -2990,7 +3178,7 @@
         "proposal_id#0 (copy)"
       ]
     },
-    "565": {
+    "588": {
       "op": "btoi",
       "defined_out": [
         "proposal_app#0"
@@ -2999,7 +3187,7 @@
         "proposal_app#0"
       ]
     },
-    "566": {
+    "589": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0"
@@ -3008,7 +3196,7 @@
         "encoded_value%0#0"
       ]
     },
-    "567": {
+    "590": {
       "op": "bytec_3 // 0x7076",
       "defined_out": [
         "0x7076",
@@ -3019,14 +3207,14 @@
         "0x7076"
       ]
     },
-    "568": {
+    "591": {
       "op": "swap",
       "stack_out": [
         "0x7076",
         "encoded_value%0#0"
       ]
     },
-    "569": {
+    "592": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -3035,7 +3223,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "570": {
+    "593": {
       "op": "dup",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -3045,7 +3233,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "571": {
+    "594": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -3058,7 +3246,7 @@
         "exists#0"
       ]
     },
-    "572": {
+    "595": {
       "op": "dup",
       "stack_out": [
         "box_prefixed_key%0#0",
@@ -3067,7 +3255,7 @@
         "exists#0 (copy)"
       ]
     },
-    "573": {
+    "596": {
       "op": "uncover 2",
       "defined_out": [
         "_%0#0",
@@ -3081,7 +3269,7 @@
         "_%0#0"
       ]
     },
-    "575": {
+    "598": {
       "op": "pop",
       "stack_out": [
         "box_prefixed_key%0#0",
@@ -3089,14 +3277,14 @@
         "exists#0"
       ]
     },
-    "576": {
+    "599": {
       "op": "bz smart_contracts.representative.contract.Representative.get_vote_box_else_body@2",
       "stack_out": [
         "box_prefixed_key%0#0",
         "exists#0"
       ]
     },
-    "579": {
+    "602": {
       "op": "frame_dig 0",
       "stack_out": [
         "box_prefixed_key%0#0",
@@ -3104,7 +3292,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "581": {
+    "604": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -3119,7 +3307,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "582": {
+    "605": {
       "error": "check self.proposals_vote_box entry exists",
       "op": "assert // check self.proposals_vote_box entry exists",
       "stack_out": [
@@ -3128,7 +3316,7 @@
         "val#0"
       ]
     },
-    "583": {
+    "606": {
       "block": "smart_contracts.representative.contract.Representative.get_vote_box_after_if_else@3",
       "stack_in": [
         "box_prefixed_key%0#0",
@@ -3147,17 +3335,17 @@
         "exists#0"
       ]
     },
-    "585": {
+    "608": {
       "op": "uncover 3"
     },
-    "587": {
+    "610": {
       "op": "uncover 3"
     },
-    "589": {
+    "612": {
       "retsub": true,
       "op": "retsub"
     },
-    "590": {
+    "613": {
       "block": "smart_contracts.representative.contract.Representative.get_vote_box_else_body@2",
       "stack_in": [
         "box_prefixed_key%0#0",
@@ -3173,10 +3361,10 @@
         "val#0"
       ]
     },
-    "608": {
+    "631": {
       "op": "b smart_contracts.representative.contract.Representative.get_vote_box_after_if_else@3"
     },
-    "611": {
+    "634": {
       "subroutine": "smart_contracts.representative.contract.Representative.is_representative",
       "params": {},
       "block": "is_representative",
@@ -3189,7 +3377,7 @@
         "tmp%0#0"
       ]
     },
-    "613": {
+    "636": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -3200,7 +3388,7 @@
         "0"
       ]
     },
-    "614": {
+    "637": {
       "op": "bytec_1 // 0x726570726573656e7461746976655f61646472657373",
       "defined_out": [
         "0",
@@ -3213,7 +3401,7 @@
         "0x726570726573656e7461746976655f61646472657373"
       ]
     },
-    "615": {
+    "638": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -3226,7 +3414,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "616": {
+    "639": {
       "error": "check self.representative_address exists",
       "op": "assert // check self.representative_address exists",
       "stack_out": [
@@ -3234,7 +3422,7 @@
         "maybe_value%0#0"
       ]
     },
-    "617": {
+    "640": {
       "op": "==",
       "defined_out": [
         "tmp%1#0"
@@ -3243,7 +3431,7 @@
         "tmp%1#0"
       ]
     },
-    "618": {
+    "641": {
       "retsub": true,
       "op": "retsub"
     }

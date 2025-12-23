@@ -13,7 +13,7 @@ def is_proposal_voting(proposal_id: UInt64) -> bool:
         prop_cfg.GS_KEY_STATUS,
     )
 
-    return status == enm.STATUS_VOTING
+    return exists and status == enm.STATUS_VOTING
 
 
 @subroutine

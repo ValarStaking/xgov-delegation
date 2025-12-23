@@ -4,7 +4,7 @@ from typing import Final
 
 SC_BOX_NAME_LEN: Final[int] = 6
 
-BPS: Final[int] = 10_000
+PPM: Final[int] = 1_000_000
 
 # Reference: https://developer.algorand.org/docs/get-details/parameter_tables/
 

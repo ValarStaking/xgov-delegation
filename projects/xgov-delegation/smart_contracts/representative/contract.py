@@ -151,7 +151,8 @@ class Representative(
                 which is defined at the Delegation Registry.
             err.PAUSED: If representative has paused its actions.
             err.VOTE_ALREADY_PUBLISHED: If representative already published the vote for the proposal.
-            err.VOTE_NOT_BPS: If vote does not add up less than or equal to 1, i.e. is not in BPS, thus invalid.
+            err.VOTE_NOT_PPM: If vote elements are not in PPM.
+                Note: sum can be over PPM to cast on purpose an invalid vote, signaling boycotting of the proposal.
             err.WRONG_RECEIVER: If payment receiver is not this contract.
             err.WRONG_PAYMENT_AMOUNT: If payment amount doesn't cover MBR.
         """
@@ -166,9 +167,8 @@ class Representative(
         proposal_app = Application(proposal_id.as_uint64())
         assert proposal_app not in self.proposals_vote_box, err.VOTE_ALREADY_PUBLISHED
 
-        assert (
-            vote.approval.as_uint64() + vote.rejection.as_uint64() <= const.BPS
-        ), err.VOTE_NOT_BPS
+        assert vote.approval.as_uint64() <= const.PPM, err.VOTE_NOT_PPM
+        assert vote.rejection.as_uint64() <= const.PPM, err.VOTE_NOT_PPM
 
         self.proposals_vote_box[proposal_app] = vote.copy()
 

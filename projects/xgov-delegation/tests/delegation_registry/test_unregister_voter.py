@@ -48,7 +48,7 @@ def test_unregister_voter_success(
         args=UnregisterVoterArgs(xgov_address=xgov_address),
         params=CommonAppCallParams(
             sender=sender,
-            extra_fee=AlgoAmount(micro_algo=5 * const.MIN_FEE),
+            extra_fee=AlgoAmount(micro_algo=6 * const.MIN_FEE),
         ),
     )
 

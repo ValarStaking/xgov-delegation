@@ -6,8 +6,8 @@ Error = arc4.String
 
 
 class Vote(arc4.Struct):
-    approval: arc4.UInt64  # in BPS
-    rejection: arc4.UInt64  # in BPS
+    approval: arc4.UInt64  # in PPM
+    rejection: arc4.UInt64  # in PPM
 
 
 class VoteRaw(arc4.Struct):

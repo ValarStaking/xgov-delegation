@@ -12,7 +12,7 @@ class IProposal(
 ):
     @abstractmethod
     @arc4.abimethod(readonly=True)
-    def get_voter_box(self, voter_address: arc4.Address) -> tuple[arc4.UInt64, bool]:
+    def get_voter_box(self, *, voter_address: arc4.Address) -> tuple[arc4.UInt64, bool]:
         """
         Returns the Voter box for the given address.
 

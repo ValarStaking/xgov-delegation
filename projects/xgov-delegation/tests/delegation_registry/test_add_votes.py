@@ -22,15 +22,13 @@ from smart_contracts.errors import std_errors as err
     [
         ("xgov", 1),
         ("xgov", 333),
-        ("other", 1),
-        ("other", 42),
+        ("voter", 42),
     ],
 )
 def test_add_votes_success(
     algorand_client: AlgorandClient,
     voter: VoterClient,
     delegation_registry_client: DelegationRegistryClient,
-    no_role_account: SigningAccount,
     account_role: str,
     add_votes: int,
 ) -> None:
@@ -47,7 +45,7 @@ def test_add_votes_success(
             delegation_registry_client.state.global_state.vote_fees.xgov * add_votes
         )
     else:
-        sender = no_role_account.address
+        sender = voter.state.global_state.manager_address
         pay_amount = (
             delegation_registry_client.state.global_state.vote_fees.other * add_votes
         )
@@ -87,6 +85,42 @@ def test_add_votes_success(
     assert (registry_end.amount - registry_end.min_balance) - (
         registry_start.amount - registry_start.min_balance
     ) == pay_amount
+
+
+def test_add_votes_unauthorized(
+    algorand_client: AlgorandClient,
+    voter: VoterClient,
+    delegation_registry_client: DelegationRegistryClient,
+    no_role_account: SigningAccount,
+) -> None:
+    add_votes = 1
+
+    xgov_address = voter.state.global_state.xgov_address
+    sender = no_role_account.address
+    pay_amount = (
+        delegation_registry_client.state.global_state.vote_fees.other * add_votes
+    )
+
+    pay_txn = algorand_client.create_transaction.payment(
+        PaymentParams(
+            sender=sender,
+            receiver=delegation_registry_client.app_address,
+            amount=AlgoAmount(micro_algo=pay_amount),
+        )
+    )
+
+    with pytest.raises(LogicError, match=err.UNAUTHORIZED):
+        delegation_registry_client.send.add_votes(
+            args=AddVotesArgs(
+                payment=pay_txn,
+                xgov_address=xgov_address,
+                add_votes=add_votes,
+            ),
+            params=CommonAppCallParams(
+                sender=sender,
+                extra_fee=AlgoAmount(micro_algo=2 * const.MIN_FEE),
+            ),
+        )
 
 
 def test_add_votes_paused_register(

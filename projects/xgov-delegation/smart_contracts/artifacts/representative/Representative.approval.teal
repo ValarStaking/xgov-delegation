@@ -3,7 +3,7 @@
 
 // algopy.arc4.ARC4Contract.approval_program() -> uint64:
 main:
-    intcblock 0 1 8 32
+    intcblock 0 1 8 32 1000000
     bytecblock 0x706175736564 0x726570726573656e7461746976655f61646472657373 0x72656769737472795f617070 0x7076 0x151f7c75
     txn ApplicationID
     bnz main_after_if_else@2
@@ -261,12 +261,12 @@ publish_vote:
     pushint 16 // 16
     ==
     assert // invalid number of bytes for smart_contracts.common.abi_types.Vote
-    // smart_contracts/representative/contract.py:158
+    // smart_contracts/representative/contract.py:159
     // mbr_before = Global.current_application_address.min_balance
     global CurrentApplicationAddress
     acct_params_get AcctMinBalance
     assert // account funded
-    // smart_contracts/representative/contract.py:160
+    // smart_contracts/representative/contract.py:161
     // assert self.is_representative(), err.UNAUTHORIZED
     callsub is_representative
     assert // Unauthorized
@@ -300,10 +300,10 @@ publish_vote:
     // smart_contracts/representative/contract.py:323
     // return proposal_creator == xgov_registry_address
     ==
-    // smart_contracts/representative/contract.py:162
+    // smart_contracts/representative/contract.py:163
     // assert self.is_valid_proposal(proposal_id), err.INVALID_PROPOSAL
     assert // Proposal is not part of xGov Registry
-    // smart_contracts/representative/contract.py:164
+    // smart_contracts/representative/contract.py:165
     // assert not self.paused.value, err.PAUSED
     intc_0 // 0
     bytec_0 // 0x706175736564
@@ -311,7 +311,7 @@ publish_vote:
     assert // check self.paused exists
     !
     assert // Contract is paused
-    // smart_contracts/representative/contract.py:167
+    // smart_contracts/representative/contract.py:168
     // assert proposal_app not in self.proposals_vote_box, err.VOTE_ALREADY_PUBLISHED
     itob
     bytec_3 // 0x7076
@@ -323,21 +323,21 @@ publish_vote:
     !
     assert // Representative vote was already published
     // smart_contracts/representative/contract.py:170
-    // vote.approval.as_uint64() + vote.rejection.as_uint64() <= const.BPS
+    // assert vote.approval.as_uint64() <= const.PPM, err.VOTE_NOT_PPM
     dig 2
     intc_0 // 0
     extract_uint64
-    dig 3
+    intc 4 // 1000000
+    <=
+    assert // Vote not in PPM
+    // smart_contracts/representative/contract.py:171
+    // assert vote.rejection.as_uint64() <= const.PPM, err.VOTE_NOT_PPM
+    dig 2
     intc_2 // 8
     extract_uint64
-    +
-    pushint 10000 // 10000
+    intc 4 // 1000000
     <=
-    // smart_contracts/representative/contract.py:169-171
-    // assert (
-    //     vote.approval.as_uint64() + vote.rejection.as_uint64() <= const.BPS
-    // ), err.VOTE_NOT_BPS
-    assert // Vote not in BPS
+    assert // Vote not in PPM
     // smart_contracts/representative/contract.py:173
     // self.proposals_vote_box[proposal_app] = vote.copy()
     uncover 2
@@ -389,6 +389,8 @@ delete_vote:
     // mbr_before = Global.current_application_address.min_balance
     global CurrentApplicationAddress
     acct_params_get AcctMinBalance
+    swap
+    cover 2
     assert // account funded
     // smart_contracts/representative/contract.py:204
     // assert self.is_representative(), err.UNAUTHORIZED
@@ -396,13 +398,7 @@ delete_vote:
     assert // Unauthorized
     // smart_contracts/representative/contract.py:207
     // proposal_id.as_uint64()
-    swap
     btoi
-    // smart_contracts/proposal/utils.py:11-14
-    // status, exists = op.AppGlobal.get_ex_uint64(
-    //     proposal_id,
-    //     prop_cfg.GS_KEY_STATUS,
-    // )
     dup
     // smart_contracts/proposal/utils.py:13
     // prop_cfg.GS_KEY_STATUS,
@@ -413,11 +409,16 @@ delete_vote:
     //     prop_cfg.GS_KEY_STATUS,
     // )
     app_global_get_ex
-    pop
     // smart_contracts/proposal/utils.py:16
-    // return status == enm.STATUS_VOTING
+    // return exists and status == enm.STATUS_VOTING
+    bz delete_vote_bool_false@4
+    dup
     pushint 25 // 25
     ==
+    bz delete_vote_bool_false@4
+    intc_1 // 1
+
+delete_vote_bool_merge@5:
     // smart_contracts/representative/contract.py:206-208
     // assert not utils_prop.is_proposal_voting(
     //     proposal_id.as_uint64()
@@ -426,6 +427,7 @@ delete_vote:
     assert // Proposal is in voting stage
     // smart_contracts/representative/contract.py:211
     // del self.proposals_vote_box[proposal_app]
+    dig 1
     itob
     bytec_3 // 0x7076
     swap
@@ -440,6 +442,8 @@ delete_vote:
     // smart_contracts/representative/contract.py:215-216
     // # Send freed MBR to creator
     // mbr_freed = mbr_before - mbr_after
+    dig 3
+    swap
     -
     // smart_contracts/representative/contract.py:217-220
     // itxn.Payment(
@@ -468,6 +472,10 @@ delete_vote:
     // @arc4.abimethod()
     intc_1 // 1
     return
+
+delete_vote_bool_false@4:
+    intc_0 // 0
+    b delete_vote_bool_merge@5
 
 
 // smart_contracts.representative.contract.Representative.delete[routing]() -> void:
