@@ -404,71 +404,31 @@ class DelegationRegistry(
 
         return
 
-    # ---------------------------------
-    # ----------    Voter    ----------
-    # ---------------------------------
     @arc4.abimethod()
-    def register_voter(
+    def prepare_voter(
         self,
         payment: gtxn.PaymentTransaction,
-        xgov_address: arc4.Address,
-        representative_address: arc4.Address,
-        window_ts: arc4.UInt64,
-    ) -> UInt64:
+    ) -> None:
         """
-        Create a Voter for an xGov at Delegation Registry.
+        Creates an unassigned Voter application that can be consumed by any Voter who registers.
+        Can be called by anyone.
 
         Args:
             payment (gtxn.PaymentTransaction): Payment transaction to cover the MBR.
-            xgov_address (arc4.Address): Address of the xGov.
-            representative_address (arc4.Address): Address of the representative.
-            window_ts (arc4.UInt64): The new time window in seconds before proposal voting period
-                ends that representative can cast the vote. Set to 0 to not have any delay.
-
-        Returns:
-            UInt64: ID of created Voter.
 
         Raises:
-            err.PAUSED_REGISTRY: If the Delegation Registry is paused.
-            err.ALREADY_VOTER: If Voter has already been registered for the xGov.
-            err.NOT_REPRESENTATIVE: If representative does not exist.
-            err.NOT_XGOV: If given xgov_address is actually not an xGov.
-            err.UNAUTHORIZED: If sender is neither xGov or its voting_address, i.e. manager.
             err.WRONG_RECEIVER: If payment receiver is not this contract.
             err.WRONG_PAYMENT_AMOUNT: If payment amount doesn't cover MBR.
         """
         mbr_before = Global.current_application_address.min_balance
 
-        assert not self.paused_registry.value, err.PAUSED_REGISTRY
-        assert xgov_address not in self.voters_box, err.ALREADY_VOTER
-
-        assert (
-            representative_address in self.representatives_box
-        ), err.NOT_REPRESENTATIVE
-
-        # Get xgov_address box
-        [xgov_box, exists], txn = arc4.abi_call(
-            IXGovRegistry.get_xgov_box,
-            xgov_address,
-            app_id=self.xgov_registry_app.value,
-        )
-        assert exists, err.NOT_XGOV
-
-        manager_address = xgov_box.voting_address
-        is_manager = arc4.Address(Txn.sender) == manager_address
-        is_xgov = arc4.Address(Txn.sender) == xgov_address
-        assert is_xgov or is_manager, err.UNAUTHORIZED
-
+        # Create a new Voter application
         box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
         # Assume program size is < const.MAX_STACK
         approval_program = box.extract(0, box.length)
 
         txn = arc4.abi_call(
             voter_contract.Voter.create,
-            xgov_address,
-            arc4.Address(Txn.sender),
-            self.representatives_box[representative_address].id,
-            window_ts,
             approval_program=approval_program,
             clear_state_program=const.MIN_PROGRAM,
             global_num_uint=voter_cfg.GLOBAL_UINTS,
@@ -484,9 +444,105 @@ class DelegationRegistry(
             amount=Global.min_balance,
         ).submit()
 
-        # Store Voter
-        voter_id = txn.created_app.id
-        self.voters_box[xgov_address] = Application(voter_id)
+        mbr_after = Global.current_application_address.min_balance
+        mbr_fee = mbr_after - mbr_before
+
+        # Check payment
+        assert (
+            payment.receiver == Global.current_application_address
+        ), err.WRONG_RECEIVER
+        assert payment.amount == mbr_fee + Global.min_balance, err.WRONG_PAYMENT_AMOUNT
+
+        return
+
+    # ---------------------------------
+    # ----------    Voter    ----------
+    # ---------------------------------
+    @arc4.abimethod()
+    def register_voter(
+        self,
+        payment: gtxn.PaymentTransaction,
+        xgov_address: arc4.Address,
+        available_voter_id: UInt64,
+    ) -> UInt64:
+        """
+        Create a Voter for an xGov at Delegation Registry.
+
+        Args:
+            payment (gtxn.PaymentTransaction): Payment transaction to cover the MBR.
+            xgov_address (arc4.Address): Address of the xGov.
+            available_voter_id: App ID of an unassigned Voter app.
+
+        Returns:
+            UInt64: ID of assigned Voter.
+
+        Raises:
+            err.PAUSED_REGISTRY: If the Delegation Registry is paused.
+            err.ALREADY_VOTER: If Voter has already been registered for the xGov.
+            err.NOT_XGOV: If given xgov_address is actually not an xGov.
+            err.UNAUTHORIZED: If sender is neither xGov or its voting_address, i.e. manager.
+            err.WRONG_RECEIVER: If payment receiver is not this contract.
+            err.WRONG_PAYMENT_AMOUNT: If payment amount doesn't cover MBR.
+        """
+        mbr_before = Global.current_application_address.min_balance
+
+        assert not self.paused_registry.value, err.PAUSED_REGISTRY
+        assert xgov_address not in self.voters_box, err.ALREADY_VOTER
+
+        # Get xgov_address box
+        [xgov_box, exists], txn = arc4.abi_call(
+            IXGovRegistry.get_xgov_box,
+            xgov_address,
+            app_id=self.xgov_registry_app.value,
+        )
+        assert exists, err.NOT_XGOV
+
+        manager_address = xgov_box.voting_address
+        is_manager = arc4.Address(Txn.sender) == manager_address
+        is_xgov = arc4.Address(Txn.sender) == xgov_address
+        assert is_xgov or is_manager, err.UNAUTHORIZED
+
+        # Create a new Voter application
+        box = Box(Bytes, key=Bytes(cfg.CONTRACT_VOTER_BOX))
+        # Assume program size is < const.MAX_STACK
+        approval_program = box.extract(0, box.length)
+
+        txn = arc4.abi_call(
+            voter_contract.Voter.create,
+            approval_program=approval_program,
+            clear_state_program=const.MIN_PROGRAM,
+            global_num_uint=voter_cfg.GLOBAL_UINTS,
+            global_num_bytes=voter_cfg.GLOBAL_BYTES,
+            local_num_uint=voter_cfg.LOCAL_UINTS,
+            local_num_bytes=voter_cfg.LOCAL_BYTES,
+            extra_program_pages=const.MAX_EXTRA_PAGES_PER_APP,
+        )
+
+        # Fund the created app with MBR
+        itxn.Payment(
+            receiver=txn.created_app.address,
+            amount=Global.min_balance,
+        ).submit()
+
+        # Check if selected Voter is unassigned
+        voter_app = Application(available_voter_id)
+
+        xgov_address_bytes, exists = op.AppGlobal.get_ex_bytes(
+            voter_app,
+            voter_cfg.GS_KEY_XGOV_ADDRESS,
+        )
+        assert (
+            arc4.Address(xgov_address_bytes) == Global.zero_address
+        ), err.VOTER_ASSIGNED
+
+        # Assign available Voter to the xGov
+        arc4.abi_call(
+            voter_contract.Voter.assign_xgov,
+            xgov_address,
+            arc4.Address(Txn.sender),
+            app_id=voter_app,
+        )
+        self.voters_box[xgov_address] = voter_app
 
         mbr_after = Global.current_application_address.min_balance
         mbr_fee = mbr_after - mbr_before
@@ -497,7 +553,7 @@ class DelegationRegistry(
         ), err.WRONG_RECEIVER
         assert payment.amount == mbr_fee + Global.min_balance, err.WRONG_PAYMENT_AMOUNT
 
-        return voter_id
+        return voter_app.id
 
     @arc4.abimethod()
     def add_votes(
@@ -508,7 +564,8 @@ class DelegationRegistry(
     ) -> None:
         """
         Pays for the votes of an xGov.
-        Can be called by anyone but if xGov is calling it, the fee is lower.
+        Can be called only by xgov_address, voting_address or voter's manager_address.
+        If xGov is calling it, the fee is lower.
 
         Args:
             payment (gtxn.PaymentTransaction): Payment for the votes.
@@ -518,21 +575,44 @@ class DelegationRegistry(
         Raises:
             err.PAUSED_REGISTRY: If the Delegation Registry is paused.
             err.NOT_VOTER: If xGov has not registered a Voter.
+            err.NOT_XGOV: If given xgov_address is actually not an xGov.
+            err.UNAUTHORIZED: If sender is neither xgov_address, voting_address nor voter's manager_address.
             err.WRONG_RECEIVER: If payment receiver is not this contract.
             err.WRONG_PAYMENT_AMOUNT: If payment amount doesn't cover the fee for the requested votes.
         """
         assert not self.paused_registry.value, err.PAUSED_REGISTRY
         assert xgov_address in self.voters_box, err.NOT_VOTER
 
-        if xgov_address == arc4.Address(Txn.sender):
+        voter_app = self.voters_box[xgov_address]
+
+        sender = arc4.Address(Txn.sender)
+        if sender == xgov_address:
             vote_fee = self.vote_fees.value.xgov.as_uint64()
         else:
             vote_fee = self.vote_fees.value.other.as_uint64()
 
+            # Get xgov_address box
+            [xgov_box, exists], txn = arc4.abi_call(
+                IXGovRegistry.get_xgov_box,
+                xgov_address,
+                app_id=self.xgov_registry_app.value,
+            )
+            assert exists, err.NOT_XGOV
+
+            manager_address_bytes, exists = op.AppGlobal.get_ex_bytes(
+                voter_app,
+                voter_cfg.GS_KEY_MANAGER_ADDRESS,
+            )
+            manager_address = arc4.Address(manager_address_bytes)
+
+            assert (
+                sender == xgov_box.voting_address or sender == manager_address
+            ), err.UNAUTHORIZED
+
         arc4.abi_call(
             voter_contract.Voter.add_votes,
             add_votes,
-            app_id=self.voters_box[xgov_address],
+            app_id=voter_app,
         )
 
         self.votes_left.value += add_votes.as_uint64()
@@ -605,10 +685,10 @@ class DelegationRegistry(
 
         assert not self.paused_registry.value, err.PAUSED_REGISTRY
         assert xgov_address in self.voters_box, err.NOT_VOTER
-        xgov_app = self.voters_box[xgov_address]
+        voter_app = self.voters_box[xgov_address]
 
         manager_address_bytes, exists = op.AppGlobal.get_ex_bytes(
-            xgov_app, voter_cfg.GS_KEY_MANAGER_ADDRESS
+            voter_app, voter_cfg.GS_KEY_MANAGER_ADDRESS
         )
         manager_address = arc4.Address.from_bytes(manager_address_bytes)
 
@@ -632,22 +712,21 @@ class DelegationRegistry(
                 or xgov_box.voting_address == xgov_address
             ):
                 arc4.abi_call(
-                    IXGovRegistry.set_voting_account,
-                    xgov_address,
+                    voter_contract.Voter.yield_voting_rights,
                     manager_address,
-                    app_id=self.xgov_registry_app.value,
+                    app_id=voter_app,
                 )
 
         # Reduce paid votes
         votes_left, exists = op.AppGlobal.get_ex_uint64(
-            xgov_app, voter_cfg.GS_KEY_VOTES_LEFT
+            voter_app, voter_cfg.GS_KEY_VOTES_LEFT
         )
         self.votes_left.value -= votes_left
         self.update_trigger_fund()
 
         arc4.abi_call(
             voter_contract.Voter.delete,
-            app_id=xgov_app,
+            app_id=voter_app,
         )
 
         # Delete Voter box

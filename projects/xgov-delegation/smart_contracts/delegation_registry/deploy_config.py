@@ -10,9 +10,17 @@ from algokit_utils import (
     CommonAppCallParams,
     OnSchemaBreak,
     OnUpdate,
+    PaymentParams,
 )
 
-from smart_contracts.common.helpers import load_sc_data_size_per_transaction
+from smart_contracts.artifacts.delegation_registry.delegation_registry_client import (
+    PrepareVoterArgs,
+)
+from smart_contracts.common.constants import MIN_FEE
+from smart_contracts.common.helpers import (
+    get_sc_voter_unassigned_mbr,
+    load_sc_data_size_per_transaction,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +62,7 @@ def _deploy_delegation_registry(algorand_client: AlgorandClient) -> None:
         }
 
     version = os.environ.get("DEL_REGISTRY_VERSION", None)
-    xgov_registry_id = int(os.environ.get("DEL_REGISTRY_ID", 0))
+    xgov_registry_id = int(os.environ.get("DEL_XGOV_REGISTRY_ID", 0))
 
     factory = algorand_client.client.get_typed_app_factory(
         typed_factory=DelegationRegistryFactory,
@@ -191,6 +199,19 @@ def _deploy_delegation_registry(algorand_client: AlgorandClient) -> None:
 
     logger.info("Resuming registry")
 
+    pay_txn = algorand_client.create_transaction.payment(
+        PaymentParams(
+            sender=deployer.address,
+            receiver=app_client.app_address,
+            amount=AlgoAmount(micro_algo=get_sc_voter_unassigned_mbr()),
+        )
+    )
+    app_client.send.prepare_voter(
+        args=PrepareVoterArgs(payment=pay_txn),
+        params=CommonAppCallParams(
+            extra_fee=AlgoAmount(micro_algo=2 * MIN_FEE),
+        ),
+    )
     app_client.send.resume_registry()
 
     should_configure = os.environ.get("DEL_REG_CONFIGURE", "false").lower() == "true"

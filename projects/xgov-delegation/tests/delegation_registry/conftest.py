@@ -11,6 +11,7 @@ from algokit_utils.config import config
 from common.helpers import (
     get_sc_representative_mbr,
     get_sc_voter_mbr,
+    get_sc_voter_unassigned_mbr,
     get_vote_mbr,
     load_sc_data_size_per_transaction,
 )
@@ -24,6 +25,7 @@ from smart_contracts.artifacts.delegation_registry.delegation_registry_client im
     Fees,
     InitContractArgs,
     LoadContractArgs,
+    PrepareVoterArgs,
     RegisterRepresentativeArgs,
     RegisterVoterArgs,
 )
@@ -41,6 +43,7 @@ from smart_contracts.artifacts.representative.representative_client import (
     Vote,
 )
 from smart_contracts.artifacts.voter.voter_client import (
+    SetRepresentativeArgs,
     SetWindowArgs,
     VoterClient,
     VoterFactory,
@@ -61,6 +64,7 @@ from tests.common import (
     DEFAULT_VOTING_DURATION,
     INITIAL_FUNDS,
 )
+from tests.delegation_registry.common import get_available_voter
 
 
 @pytest.fixture(scope="session")
@@ -226,6 +230,21 @@ def delegation_registry_client(
             ),
         )
 
+    # Prepare first voter
+    pay_txn = algorand_client.create_transaction.payment(
+        PaymentParams(
+            sender=deployer.address,
+            receiver=client.app_address,
+            amount=AlgoAmount(micro_algo=get_sc_voter_unassigned_mbr()),
+        )
+    )
+    client.send.prepare_voter(
+        args=PrepareVoterArgs(payment=pay_txn),
+        params=CommonAppCallParams(
+            extra_fee=AlgoAmount(micro_algo=2 * const.MIN_FEE),
+        ),
+    )
+
     # Resume registry
     client.send.resume_registry()
 
@@ -306,11 +325,16 @@ def voter(
     delegation_registry_client: DelegationRegistryClient,
     xgov_registry_mock_client: XgovRegistryMockClient,
 ) -> VoterClient:
-    representative_address = representative.state.global_state.representative_address
+    representative_id = representative.app_id
     xgov_address = xgov_delegated.address
     sender = xgov_registry_mock_client.state.box.xgov_box.get_value(
         xgov_address
     ).voting_address
+
+    available_voter = get_available_voter(
+        algorand_client=algorand_client,
+        delegation_registry_client=delegation_registry_client,
+    )
 
     pay_amount = get_sc_voter_mbr()
     pay_txn = algorand_client.create_transaction.payment(
@@ -325,17 +349,34 @@ def voter(
         args=RegisterVoterArgs(
             payment=pay_txn,
             xgov_address=xgov_address,
-            representative_address=representative_address,
-            window_ts=voter_cfg.DEFAULT_WINDOW_TS,
+            available_voter_id=available_voter.id,
         ),
         params=CommonAppCallParams(
             sender=sender,
-            extra_fee=AlgoAmount(micro_algo=3 * const.MIN_FEE),
+            extra_fee=AlgoAmount(micro_algo=4 * const.MIN_FEE),
         ),
     )
 
     client = algorand_client.client.get_typed_app_client_by_id(
         typed_client=VoterClient, app_id=result.abi_return
+    )
+
+    # Set voter representative and window
+    client.send.set_representative(
+        args=SetRepresentativeArgs(
+            representative_id=representative_id,
+        ),
+        params=CommonAppCallParams(
+            sender=xgov_address,
+        ),
+    )
+    client.send.set_window(
+        args=SetWindowArgs(
+            window_ts=voter_cfg.DEFAULT_WINDOW_TS,
+        ),
+        params=CommonAppCallParams(
+            sender=xgov_address,
+        ),
     )
 
     # Get voter a vote to be triggered
@@ -485,7 +526,7 @@ def proposal_voter(
 
     sender = representative.state.global_state.representative_address
     proposal_id = proposal_mock_client.app_id
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
     pay_amount = get_vote_mbr()
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(

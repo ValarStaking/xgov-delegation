@@ -14,7 +14,9 @@ class IXGovRegistry(
 ):
     @abstractmethod
     @arc4.abimethod(readonly=True)
-    def get_xgov_box(self, xgov_address: arc4.Address) -> tuple[typ.XGovBoxValue, bool]:
+    def get_xgov_box(
+        self, *, xgov_address: arc4.Address
+    ) -> tuple[typ.XGovBoxValue, bool]:
         """
         Returns the xGov box for the given address.
 
@@ -31,6 +33,7 @@ class IXGovRegistry(
     @arc4.abimethod()
     def vote_proposal(
         self,
+        *,
         proposal_id: arc4.UInt64,
         xgov_address: arc4.Address,
         approval_votes: arc4.UInt64,
@@ -63,7 +66,7 @@ class IXGovRegistry(
 
     @arc4.abimethod()
     def set_voting_account(
-        self, xgov_address: arc4.Address, voting_address: arc4.Address
+        self, *, xgov_address: arc4.Address, voting_address: arc4.Address
     ) -> None:
         """
         Sets the Voting Address for the xGov.

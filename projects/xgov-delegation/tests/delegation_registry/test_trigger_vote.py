@@ -120,7 +120,7 @@ def test_trigger_vote_invalid_proposal(
     proposal_id = proposal_fake_client.app_id
     xgov_address = voter.state.global_state.xgov_address
 
-    with pytest.raises(LogicError, match="error: assert failed pc=446"):
+    with pytest.raises(LogicError, match="error: assert failed pc=450"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,
@@ -154,7 +154,7 @@ def test_trigger_vote_no_votes_left(
         ),
     )
 
-    with pytest.raises(LogicError, match="error: assert failed pc=452"):
+    with pytest.raises(LogicError, match="error: assert failed pc=456"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,
@@ -227,7 +227,7 @@ def test_trigger_vote_too_soon(
         ),
     )
 
-    with pytest.raises(LogicError, match="error: assert failed pc=528"):
+    with pytest.raises(LogicError, match="error: assert failed pc=530"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,
@@ -272,7 +272,7 @@ def test_trigger_vote_rep_not_existent(
         ),
     )
 
-    with pytest.raises(LogicError, match="error: assert failed pc=538"):
+    with pytest.raises(LogicError, match="error: assert failed pc=541"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,
@@ -323,7 +323,7 @@ def test_trigger_vote_vote_invalid(
             ),
         )
 
-    with pytest.raises(LogicError, match="error: assert failed pc=592"):
+    with pytest.raises(LogicError, match="error: assert failed pc=595"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,
@@ -351,7 +351,7 @@ def test_trigger_vote_no_votes(
         )
     )
 
-    with pytest.raises(LogicError, match="error: assert failed pc=646"):
+    with pytest.raises(LogicError, match="error: assert failed pc=649"):
         delegation_registry_client.send.trigger_vote(
             args=TriggerVoteArgs(
                 xgov_address=xgov_address,

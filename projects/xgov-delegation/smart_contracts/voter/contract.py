@@ -73,39 +73,25 @@ class Voter(
     @arc4.abimethod(create="require")
     def create(
         self,
-        xgov_address: arc4.Address,
-        manager_address: arc4.Address,
-        representative_id: arc4.UInt64,
-        window_ts: arc4.UInt64,
     ) -> None:
         """
         Create a new Voter.
         MUST BE CALLED BY THE REGISTRY CONTRACT.
 
-        Args:
-            xgov_address (arc4.Address): Address of the xGov.
-            manager_address (arc4.Address): Address of the xGov manager, i.e. its voting_address.
-            representative_id (arc4.UInt64): The application ID of the representative.
-            window_ts (arc4.UInt64): The new time window in seconds before proposal voting period
-                ends that representative can cast the vote. Set to 0 to not have any delay.
-
         Raises:
             err.UNAUTHORIZED: If the sender is not the Delegation Registry.
-            err.UNRELATED_APP: If any app was not created by the Delegation Registry.
         """
         assert (
             Global.caller_application_id != 0
         ), err.UNAUTHORIZED  # Only callable by another contract
 
         self.registry_app.value = Application(Global.caller_application_id)
-        self.xgov_address.value = xgov_address.native
-        self.manager_address.value = manager_address.native
-        self.representative_app.value = Application(representative_id.as_uint64())
-        self.window_ts.value = window_ts.as_uint64()
 
+        self.xgov_address.value = Global.zero_address
+        self.manager_address.value = Global.zero_address
+        self.representative_app.value = Application()
+        self.window_ts.value = UInt64(0)
         self.votes_left.value = UInt64(0)
-
-        self.verify_new_app(self.representative_app.value)
 
         return
 
@@ -119,6 +105,29 @@ class Voter(
             err.NOT_CREATOR: If the sender is not the Delegation Registry.
         """
         assert self.is_creator(), err.NOT_CREATOR
+
+        return
+
+    @arc4.abimethod()
+    def assign_xgov(
+        self,
+        xgov_address: arc4.Address,
+        manager_address: arc4.Address,
+    ) -> None:
+        """
+        Assign the contract to an xGov.
+
+        Args:
+            xgov_address (arc4.Address): Address of the xGov.
+            manager_address (arc4.Address): Address of the new manager.
+
+        Raises:
+            err.NOT_CREATOR: If the sender is not the Delegation Registry.
+        """
+        assert self.is_creator(), err.NOT_CREATOR
+
+        self.xgov_address.value = xgov_address.native
+        self.manager_address.value = manager_address.native
 
         return
 
@@ -243,8 +252,8 @@ class Voter(
         assert exists, err.NO_VOTES
 
         # Calculate votes
-        approvals = (votes.as_uint64() * vote.approval.as_uint64()) // const.BPS
-        rejections = (votes.as_uint64() * vote.rejection.as_uint64()) // const.BPS
+        approvals = (votes.as_uint64() * vote.approval.as_uint64()) // const.PPM
+        rejections = (votes.as_uint64() * vote.rejection.as_uint64()) // const.PPM
 
         # Vote
         arc4.abi_call(
@@ -303,9 +312,9 @@ class Voter(
             voting_address (arc4.Address): The voting account address to delegate voting power to.
 
         Raises:
-            err.UNAUTHORIZED: If the sender is not the xGov or its manager.
+            err.UNAUTHORIZED: If the sender is not the xGov or its manager or creator.
         """
-        assert self.is_xgov_or_manager(), err.UNAUTHORIZED
+        assert self.is_xgov_or_manager() or self.is_creator(), err.UNAUTHORIZED
 
         arc4.abi_call(
             IXGovRegistry.set_voting_account,

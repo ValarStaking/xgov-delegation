@@ -60,5 +60,14 @@ def get_sc_voter_mbr() -> int:
     )
 
 
+def get_sc_voter_unassigned_mbr() -> int:
+    return (
+        ACCOUNT_MBR
+        + MAX_PAGES_PER_APP * PER_PAGE_MBR
+        + voter_cfg.GLOBAL_UINTS * PER_UINT_SLICE_ENTRY_MBR
+        + voter_cfg.GLOBAL_BYTES * PER_BYTE_SLICE_ENTRY_MBR
+    )
+
+
 def get_vote_mbr() -> int:
     return get_box_mbr(size=PROPOSALS_VOTE_BOX_SIZE)

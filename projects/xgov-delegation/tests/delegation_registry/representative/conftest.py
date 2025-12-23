@@ -54,7 +54,7 @@ def representative_vote(
             payment=pay_txn,
             proposal_id=proposal_id,
             vote=Vote(
-                approval=const.BPS,
+                approval=const.PPM,
                 rejection=0,
             ),
         ),

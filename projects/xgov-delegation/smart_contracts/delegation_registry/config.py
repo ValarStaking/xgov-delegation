@@ -24,7 +24,6 @@ CONTRACT_REPRESENTATIVE_BOX: Final[bytes] = b"sc_rep"
 
 # Parameters
 ALGO_TO_MICROALGO = 10**6
-PERC_TO_BPS = 100
 WEEKS_TO_SECONDS = 7 * 24 * 3_600
 
 ## Amounts

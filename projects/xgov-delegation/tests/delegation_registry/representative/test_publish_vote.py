@@ -20,16 +20,24 @@ from smart_contracts.errors import std_errors as err
 
 
 def is_vote_valid(vote: Vote) -> bool:
-    return vote.approval + vote.rejection <= const.BPS
+    return vote.approval + vote.rejection <= const.PPM
+
+
+def is_vote_boycott(vote: Vote) -> bool:
+    total = vote.approval + vote.rejection
+    return (
+        total > const.PPM and vote.approval <= const.PPM and vote.rejection <= const.PPM
+    )
 
 
 @pytest.mark.parametrize(
     "vote",
     [
-        Vote(approval=const.BPS, rejection=0),
-        Vote(approval=0, rejection=const.BPS),
-        Vote(approval=const.BPS, rejection=const.BPS),
-        Vote(approval=const.BPS // 2, rejection=const.BPS // 2),
+        Vote(approval=const.PPM, rejection=0),
+        Vote(approval=0, rejection=const.PPM),
+        Vote(approval=const.PPM, rejection=const.PPM),
+        Vote(approval=const.PPM // 2, rejection=const.PPM // 2),
+        Vote(approval=const.PPM * 2, rejection=0),
     ],
 )
 def test_publish_vote(
@@ -50,7 +58,7 @@ def test_publish_vote(
         )
     )
 
-    if is_vote_valid(vote):
+    if is_vote_valid(vote) or is_vote_boycott(vote):
 
         representative.send.publish_vote(
             args=PublishVoteArgs(
@@ -73,7 +81,7 @@ def test_publish_vote(
         )
 
     else:
-        with pytest.raises(LogicError, match=err.VOTE_NOT_BPS):
+        with pytest.raises(LogicError, match=err.VOTE_NOT_PPM):
             representative.send.publish_vote(
                 args=PublishVoteArgs(
                     payment=pay_txn,
@@ -95,7 +103,7 @@ def test_publish_vote_unauthorized(
     sender = no_role_account.address
     proposal_id = proposal_mock_client.app_id
     pay_amount = get_vote_mbr()
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(
@@ -126,7 +134,7 @@ def test_publish_vote_invalid_proposal(
     sender = representative.state.global_state.representative_address
     proposal_id = proposal_fake_client.app_id
     pay_amount = get_vote_mbr()
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(
@@ -157,7 +165,7 @@ def test_publish_vote_paused(
     sender = representative_paused.state.global_state.representative_address
     proposal_id = proposal_mock_client.app_id
     pay_amount = get_vote_mbr()
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(
@@ -188,7 +196,7 @@ def test_publish_vote_already_published(
     sender = representative_vote.state.global_state.representative_address
     proposal_id = proposal_mock_client.app_id
     pay_amount = get_vote_mbr()
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(
@@ -219,7 +227,7 @@ def test_publish_vote_wrong_receiver(
     sender = representative.state.global_state.representative_address
     proposal_id = proposal_mock_client.app_id
     pay_amount = get_vote_mbr()
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(
@@ -250,7 +258,7 @@ def test_publish_vote_wrong_amount(
     sender = representative.state.global_state.representative_address
     proposal_id = proposal_mock_client.app_id
     pay_amount = get_vote_mbr() - 1
-    vote = Vote(approval=const.BPS, rejection=0)
+    vote = Vote(approval=const.PPM, rejection=0)
 
     pay_txn = algorand_client.create_transaction.payment(
         PaymentParams(

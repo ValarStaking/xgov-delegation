@@ -18,7 +18,7 @@ The Voter may be created by the xGov or its voting address.
 The Voter may change its Representative at any time.
 The Voter may define a delay before automatically voting according to the Representative.
 This way, the xGov has the time to vote on its own and only if it does not vote by the specified time, will it automatically vote according to the Representative.
-Anyone may prepay for the votes of a Voter.
+Only the xGov, its voting or voter manager address may prepay for the votes of a Voter.
 There may be a discount if the payment comes from the xGov.
 If the xGov deregisters from the xGov program, its Voter contract is also deleted.
 
@@ -26,8 +26,12 @@ The Representative may pause or deregister its representation at any time.
 This blocks the representation.
 It is up to the xGov delegators to switch to another Representative in such a case if desired.
 The Representative may not switch its vote for a Proposal that is in voting stage.
+Representative's vote is expressed in PPM.
+The Representative may explicitly boycott a proposal by casting a vote whose sum exceeds PPM_MAX.
 
 Anyone may trigger the casting of a delegated vote.
 The account that triggered the vote is rewarded for the action.
+
+Mainnet deployment: 3378436620
 
 Copyright (C) 2025 Valar Solutions GmbH
