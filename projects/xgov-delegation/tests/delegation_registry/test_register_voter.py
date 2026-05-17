@@ -20,9 +20,9 @@ from smart_contracts.artifacts.delegation_registry.delegation_registry_client im
     RegisterVoterArgs,
 )
 from smart_contracts.common import constants as const
+from smart_contracts.common.helpers import get_available_voter
 from smart_contracts.errors import std_errors as err
 from tests.common import INITIAL_FUNDS
-from tests.delegation_registry.common import get_available_voter
 
 
 @pytest.mark.parametrize("account_role", ["xgov", "voting"])

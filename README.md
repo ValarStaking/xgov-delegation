@@ -34,4 +34,4 @@ The account that triggered the vote is rewarded for the action.
 
 Mainnet deployment: 3378436620
 
-Copyright (C) 2025 Valar Solutions GmbH
+Copyright (C) 2026 Valar Solutions GmbH

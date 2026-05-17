@@ -56,6 +56,7 @@ from smart_contracts.artifacts.xgov_registry_mock.xgov_registry_mock_client impo
     XgovRegistryMockFactory,
 )
 from smart_contracts.common import constants as const
+from smart_contracts.common.helpers import get_available_voter
 from smart_contracts.delegation_registry import config as regcfg
 from smart_contracts.voter import config as voter_cfg
 from tests.common import (
@@ -64,7 +65,6 @@ from tests.common import (
     DEFAULT_VOTING_DURATION,
     INITIAL_FUNDS,
 )
-from tests.delegation_registry.common import get_available_voter
 
 
 @pytest.fixture(scope="session")
