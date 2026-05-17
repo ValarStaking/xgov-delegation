@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "xgov-delegation"
-version = "0.1.0"
+version = "0.1.1"
 description = "Algorand smart contracts"
 authors = ["Valar Solutions <contact@valar.solutions>"]
 readme = "README.md"
