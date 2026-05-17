@@ -24,9 +24,9 @@ from smart_contracts.artifacts.voter.voter_client import (
     VoterFactory,
 )
 from smart_contracts.common import constants as const
+from smart_contracts.common.helpers import get_available_voter
 from smart_contracts.delegation_registry import config as regcfg
 from smart_contracts.errors import std_errors as err
-from tests.delegation_registry.common import get_available_voter
 
 
 def test_prepare_voter(
